@@ -3,7 +3,11 @@ import axios from "axios";
 export const GetLogo = (sym, props) => {
   var logo = props.logoList;
   var result = axios
-    .get("https://finance.yahoo.com/quote/" + sym + "/profile")
+    .get(
+      "https://cors-anywhere.herokuapp.com/https://finance.yahoo.com/quote/" +
+        sym +
+        "/profile"
+    )
     .then((response) => {
       if (response.status === 200) {
         try {

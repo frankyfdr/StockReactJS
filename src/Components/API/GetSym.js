@@ -3,8 +3,18 @@ import axios from "axios";
 import ViewShare from "../ViewShare";
 
 export const GetSymInfo = (sym, logo, logoList) => {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json",
+  };
   return axios
-    .get("https://query1.finance.yahoo.com/v7/finance/quote?symbols=" + sym)
+    .get(
+      "https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/quote?symbols=" +
+        sym,
+      {
+        headers,
+      }
+    )
     .then((data) => {
       try {
         data = data.data.quoteResponse.result;
