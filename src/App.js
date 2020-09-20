@@ -10,7 +10,7 @@ import { UserContext } from "./Context";
 import { GetLogo } from "./Components/API/GetLogo";
 
 const App = () => {
-  const [displaySettings, setDisplaySettings] = useState("block");
+  const [displaySettings, setDisplaySettings] = useState("none");
   const [symList, setSymList] = useState([]);
   const [rendimento, setRendimento] = useState(0);
   const [listCnt, setListCnt] = useState([]);
