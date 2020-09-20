@@ -1,0 +1,32 @@
+.Show {
+  margin: 2%;
+  margin-top: 0.2%;
+  float: right;
+  width: 96%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.winners {
+  display: flex;
+  flex-wrap: wrap;
+}
+.losers {
+  display: flex;
+  flex-wrap: wrap;
+}
+.titleWinners,
+.titleLosers {
+  text-align: center;
+  margin: 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  width: 100%;
+}
+
+.titleWinners {
+  background-color: rgba(43, 180, 43, 0.562);
+}
+.titleLosers {
+  background-color: rgba(197, 54, 54, 0.541);
+}

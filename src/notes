@@ -1,0 +1,79 @@
+
+/*
+
+
+ADS.DE,ALV.DE,AOX.DE,AMZN,AAPL,GOLD,BDEV.L,BWY.L,AFX.DE,KO,EBAY,ELG.DE,EPR,JD.L,MAC,D7G.F,NKE,NVDA,TSLA,WMT,DIS,ZM
+
+
+
+  axios
+    .get("https://finance.yahoo.com/quote/" + sym + "/key-statistics?p=" + sym)
+    .then(function (response) {
+      // handle success
+
+      try {
+        var res = response.data;
+        var SrchPrice = "Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)";
+        var SrchChangePrice =
+          'class="Trsdu(0.3s) Fw(500) Pstart(10px) Fz(24px)';
+        var srchName = "D(ib) Fz(18px)";
+        price = mina(SrchPrice, res);
+        change = mina(SrchChangePrice, res);
+        change = change.split(" ");
+        color = change[1].slice(1, 2);
+        if (color === "+") color = "Cgreen";
+        else if (color === "-") color = "Cred";
+        name = mina(srchName, res);
+        updateCookie(sym);
+      } catch (e) {
+        console.log("error", e);
+      }
+    });
+
+function mina(marcador, data) {
+  var n = data.indexOf(marcador);
+
+  var res = data.slice(n);
+
+  res = res.split(">");
+
+  res = res[1].split("<");
+
+  var final = res[0];
+
+  return final;
+}
+export function isRepeted(sym) {
+  try {
+    var ckie = document.cookie;
+    ckie = ckie.split(",");
+
+    for (var i = 0; i < ckie.length; i++) {
+      if (ckie[i] == sym) {
+        return true;
+      }
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+
+
+https://query1.finance.yahoo.com/v7/finance/quote?symbols=AXP
+
+
+
+
+
+
+search lists
+all
+https://query2.finance.yahoo.com/v1/finance/lookup?formatted=true&lang=en-US&region=US&query=franklin&type=all&count=25&start=0&corsDomain=finance.yahoo.com
+stocks
+https://query1.finance.yahoo.com/v1/finance/lookup?formatted=true&lang=en-US&region=US&query=franklin&type=equity&count=25&start=0&corsDomain=finance.yahoo.com
+
+
+http://bldtv.vip/001/4560/170241
+*/
