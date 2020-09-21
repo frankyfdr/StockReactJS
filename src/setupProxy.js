@@ -5,12 +5,9 @@ module.exports = function (app) {
     "/info",
     createProxyMiddleware({
       target: "https://query1.finance.yahoo.com",
-
+      changeOrigin: true,
       pathRewrite: {
         "/info": "",
-      },
-      router: {
-        "localhost:3000/info": "https://query1.finance.yahoo.com", // host + path
       },
     })
   );
@@ -18,6 +15,7 @@ module.exports = function (app) {
     "/logo",
     createProxyMiddleware({
       target: "https://finance.yahoo.com",
+      changeOrigin: true,
       pathRewrite: {
         "/logo": "",
       },
@@ -27,11 +25,13 @@ module.exports = function (app) {
     "/lookup",
     createProxyMiddleware({
       target: "https://query2.finance.yahoo.com",
+      changeOrigin: true,
       pathRewrite: {
         "/lookup": "",
       },
     })
   );
+  app.listen(8080);
 };
 
 /*
