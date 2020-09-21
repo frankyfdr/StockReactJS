@@ -30,8 +30,7 @@ const App = () => {
           });
         }
       });
-      document.cookie =
-        "" + "AXP,MA" + ";expires=" + 30 * 24 * 60 * 60 * 1000 + ";path=/";
+
       setLogoList(list);
       setFirstTimeRun(false);
     }
