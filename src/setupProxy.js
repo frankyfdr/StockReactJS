@@ -9,6 +9,9 @@ module.exports = function (app) {
       pathRewrite: {
         "/info": "",
       },
+      router: {
+        "localhost:3000/info": "https://query1.finance.yahoo.com", // host + path
+      },
     })
   );
   app.use(
