@@ -40,6 +40,7 @@ export default class SearchBar extends React.Component {
         .then((response) => {
           if (response.status === 200) {
             response = response.data.finance.result[0].documents;
+            alert(response);
             var list = response.map((item) => {
               return (
                 <option

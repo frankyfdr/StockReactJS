@@ -3,13 +3,10 @@ import axios from "axios";
 import ViewShare from "../ViewShare";
 
 export const GetSymInfo = (sym, logo, logoList) => {
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "application/json",
-  };
   return axios.get("/info/v7/finance/quote?symbols=" + sym).then((data) => {
     try {
       data = data.data.quoteResponse.result;
+      console.log(data);
       var rendimentoPerc = 0;
       var list = data.map((item) => {
         var color = "Cgreen";
