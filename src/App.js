@@ -18,6 +18,7 @@ const App = () => {
   const [fistTimeRun, setFirstTimeRun] = useState(true);
   useEffect(() => {
     setInterval(() => load(), 2000);
+
     if (fistTimeRun === true) {
       let list = logoList;
       let cookie = document.cookie;
@@ -29,6 +30,8 @@ const App = () => {
           });
         }
       });
+      document.cookie =
+        "" + "AXP,MA" + ";expires=" + 30 * 24 * 60 * 60 * 1000 + ";path=/";
       setLogoList(list);
       setFirstTimeRun(false);
     }

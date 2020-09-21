@@ -33,7 +33,7 @@ export default class SearchBar extends React.Component {
       this.setState({ displaySearchList: "block" });
       axios
         .get(
-          "https://query2.finance.yahoo.com/v1/finance/lookup?formatted=true&lang=en-US&region=US&query=" +
+          "/lookup/v1/finance/lookup?formatted=true&lang=en-US&region=US&query=" +
             this.state.sym +
             "&type=all&count=5&start=0"
         )
