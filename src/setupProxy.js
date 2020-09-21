@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/info",
     createProxyMiddleware({
-      target: "https://query1.finance.yahoo.com",
+      target: "http://query1.finance.yahoo.com",
       changeOrigin: true,
       pathRewrite: {
         "/info": "",
@@ -14,7 +14,7 @@ module.exports = function (app) {
   app.use(
     "/logo",
     createProxyMiddleware({
-      target: "https://finance.yahoo.com",
+      target: "http://finance.yahoo.com",
       changeOrigin: true,
       pathRewrite: {
         "/logo": "",
@@ -24,14 +24,13 @@ module.exports = function (app) {
   app.use(
     "/lookup",
     createProxyMiddleware({
-      target: "https://query2.finance.yahoo.com",
+      target: "http://query2.finance.yahoo.com",
       changeOrigin: true,
       pathRewrite: {
         "/lookup": "",
       },
     })
   );
-  app.listen(3000);
 };
 
 /*

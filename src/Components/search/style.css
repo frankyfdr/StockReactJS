@@ -15,7 +15,7 @@
   color: white;
 }
 form {
-  width: auto;
+  width: 30%;
 }
 #settings {
   position: absolute;
@@ -41,7 +41,7 @@ form {
 }
 #searchBtn {
   border-radius: 10px;
-  width: 70px;
+  width: 30%;
   height: auto;
   border: 1px rgb(161, 157, 157) solid;
 }
