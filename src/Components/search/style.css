@@ -7,6 +7,7 @@
   align-items: center;
 }
 #inputT {
+  float: left;
   border-radius: 10px;
   width: 70%;
   padding-left: 0.9em;
@@ -15,7 +16,7 @@
   color: white;
 }
 form {
-  width: 30%;
+  width: auto;
 }
 #settings {
   position: absolute;
@@ -40,8 +41,9 @@ form {
   overflow-y: auto;
 }
 #searchBtn {
+  float: right;
   border-radius: 10px;
-  width: 30%;
+  width: 70px;
   height: auto;
   border: 1px rgb(161, 157, 157) solid;
 }

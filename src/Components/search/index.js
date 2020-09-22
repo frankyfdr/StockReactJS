@@ -31,12 +31,9 @@ export default class SearchBar extends React.Component {
 
     if (event.target.value !== "" && event.target.value.length > 1) {
       this.setState({ displaySearchList: "block" });
+
       axios
-        .get(
-          "/lookup/v1/finance/lookup?formatted=true&lang=en-US&region=US&query=" +
-            this.state.sym +
-            "&type=all&count=5&start=0"
-        )
+        .get(this.props.nodejs + "/lookup/" + this.state.sym)
         .then((response) => {
           if (response.status === 200) {
             response = response.data.finance.result[0].documents;
@@ -74,13 +71,15 @@ export default class SearchBar extends React.Component {
   Searching = async (sym) => {
     if (sym !== "") {
       try {
-        let logo = await GetLogo(sym, this.props);
+        let logo = await GetLogo(sym, this.props, this.props.nodejs);
         let list = this.props.logoList;
         list[sym] = logo;
 
-        GetSymInfo(sym, logo, this.props.logoList).then((info) => {
-          this.props.setList(info[1]);
-        });
+        GetSymInfo(sym, logo, this.props.logoList, this.props.nodejs).then(
+          (info) => {
+            this.props.setList(info[1]);
+          }
+        );
         this.props.setLogoList(list);
       } catch (e) {
         console.log("/search/Searching error: ", e);

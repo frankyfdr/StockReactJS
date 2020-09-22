@@ -1,19 +1,15 @@
 import axios from "axios";
 
-export const GetLogo = (sym, props) => {
+export const GetLogo = (sym, props, nodejs) => {
   var logo = props.logoList;
-  var result = axios.get("/logo/quote/" + sym + "/profile").then((response) => {
+  var result = axios.get(nodejs + "/logo/" + sym).then((response) => {
     try {
-      response = response.request.responseText;
-      var n = response.indexOf("D(ib) W(47.727%) Pend(40px)");
-      var aux = response.slice(n);
-      n = aux.indexOf("http");
-      aux = aux.slice(n).split('"')[0];
+      response = response.data.result[0].assetProfile.website;
       var site = "//logo.clearbit.com/";
 
-      n = aux.indexOf("www.");
-      if (n === -1) n = aux.indexOf("p://");
-      aux = aux.slice(n + 4);
+      var n = response.indexOf("www.");
+      if (n === -1) n = response.indexOf("p://");
+      var aux = response.slice(n + 4);
 
       n = aux.indexOf("/");
 

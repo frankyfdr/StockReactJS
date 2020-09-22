@@ -16,6 +16,7 @@ const App = () => {
   const [listCnt, setListCnt] = useState([]);
   const [logoList, setLogoList] = useState([]);
   const [fistTimeRun, setFirstTimeRun] = useState(true);
+  const [nodejs] = useState("http://localhost:3001");
   useEffect(() => {
     setInterval(() => load(), 2000);
 
@@ -25,7 +26,7 @@ const App = () => {
       cookie = cookie.split(",");
       cookie.map((item) => {
         if (item !== "") {
-          GetLogo(item, logoList).then((logo) => {
+          GetLogo(item, logoList, nodejs).then((logo) => {
             list[item] = logo;
           });
         }
@@ -41,7 +42,7 @@ const App = () => {
   const load = () => {
     var ckie = document.cookie;
     if (ckie !== "")
-      GetSymInfo(ckie, "", logoList).then((list) => {
+      GetSymInfo(ckie, "", logoList, nodejs).then((list) => {
         return setRendimento(list[0]) + setSymList(list[1]);
       });
   };
@@ -51,6 +52,7 @@ const App = () => {
       <UserContext.Provider>
         <Header />
         <Search
+          nodejs={nodejs}
           logoList={logoList}
           setLogoList={setLogoList}
           settings={displaySettings}

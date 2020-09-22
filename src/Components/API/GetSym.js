@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import ViewShare from "../ViewShare";
 
-export const GetSymInfo = (sym, logo, logoList) => {
-  return axios.get("/info/v7/finance/quote?symbols=" + sym).then((data) => {
+export const GetSymInfo = (sym, logo, logoList, nodejs) => {
+  return axios.get(nodejs + "/info/" + sym).then((data) => {
     try {
       data = data.data.quoteResponse.result;
       var rendimentoPerc = 0;
