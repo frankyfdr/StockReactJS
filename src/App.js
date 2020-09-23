@@ -16,7 +16,9 @@ const App = () => {
   const [listCnt, setListCnt] = useState([]);
   const [logoList, setLogoList] = useState([]);
   const [fistTimeRun, setFirstTimeRun] = useState(true);
-  const [nodejs] = useState("http://localhost:3001");
+  const [nodejs] = useState(
+    "https://ec2-54-209-55-62.compute-1.amazonaws.com:3001"
+  );
   useEffect(() => {
     setInterval(() => load(), 2000);
 

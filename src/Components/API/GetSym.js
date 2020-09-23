@@ -52,9 +52,7 @@ export const GetSymInfo = (sym, logo, logoList, nodejs) => {
               ckie +
               "," +
               item +
-              ";expires=" +
-              30 * 24 * 60 * 60 * 1000 +
-              ";path=/";
+              ";expires=Thu, 18 Dec 2030 12:00:00 UTC;path=/";
           }
         });
         rendimentoPerc = (rendimentoPerc / list.length).toFixed(2);
