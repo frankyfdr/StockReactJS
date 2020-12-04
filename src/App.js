@@ -21,12 +21,12 @@ const App = () => {
   useEffect(() => {
     setInterval(() => load(), 2000);
 
-    //load();
-    // eslint-disable-next-line no-use-before-define
+   
   }, []);
 
   const load = () => {
     var ckie = document.cookie;
+   
     if (ckie !== "")
     {
       GetSymInfo(ckie, nodejs).then((list) => {
@@ -34,7 +34,8 @@ const App = () => {
       });
     } else
     {
-       document.cookie = "NFLX,AMZN,AAPL,GOOGL,KO,MCD,MSFT,TSLA,SNE;expires=Thu, 18 Dec 2030 12:00:00 UTC;path=/";
+      document.cookie = "NFLX,AMZN,AAPL,GOOGL,KO,MCD,MSFT,TSLA,SNE;expires=Thu, 18 Dec 2030 12:00:00 UTC;path=/";
+      
     }
   };
 
@@ -42,6 +43,7 @@ const App = () => {
     <div>
        
         <Header />
+       <div>{ document.cookie}</div>
         <Search
           nodejs={nodejs}
           logoList={logoList}
