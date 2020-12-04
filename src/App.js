@@ -17,7 +17,7 @@ const App = () => {
   const [listCnt, setListCnt] = useState([0]);
   const [logoList, setLogoList] = useState([]);
   const [fistTimeRun, setFirstTimeRun] = useState(true);
-  const [nodejs] = useState("https://frankyfdr-api.herokuapp.com/");
+  const [nodejs] = useState("https://frankyfdr-api.herokuapp.com");
   useEffect(() => {
     setInterval(() => load(), 2000);
 
