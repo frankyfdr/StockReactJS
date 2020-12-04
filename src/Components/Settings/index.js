@@ -2,15 +2,20 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { GetSymInfo } from "../API/GetSym";
+import { Link } from "react-router-dom";
 
 const Settings = (props) => {
+  
   const [list, setList] = useState();
+  const [checkList, setCheckList] = useState("");
+  
 
   useEffect(() => {
     if (props.list != null) {
       ShowSymList();
     }
-  }, [props.list]);
+    
+  }, [props.list, checkList]);
 
   const ShowSymList = () => {
     try {
@@ -19,7 +24,7 @@ const Settings = (props) => {
       getList = getList[0].map((item) => {
         return (
           <label className="ListSym" key={item.key} id="" value={item.key}>
-            <input className="inputCk" value={item.key} type="checkbox" />
+            <input className="inputCk" onClick={clicked} value={item.key} type="checkbox" />
             {item.props.name}
           </label>
         );
@@ -30,24 +35,58 @@ const Settings = (props) => {
     }
   };
 
-  const removeHandle = () => {
+
+  const clicked = (event) => 
+  {
+    if(event.target.checked === true)
+    {
+      if(checkList !== "")
+      setCheckList(checkList+","+event.target.value);
+      else
+      setCheckList(event.target.value);
+    }
+    else
+{
+  let rm = checkList;
+  if(checkList.includes(event.target.value+","))
+     rm = rm.replace(event.target.value+",","")
+    else
+    if(checkList.includes(event.target.value))
+    rm = rm.replace(event.target.value,"")     
+     setCheckList(rm);
+}   
+  }
+
+  const clickedHandle = (event) => {
     var checkedList = [];
     checkedList = document.getElementsByClassName("ListSym");
     checkedList = Array.prototype.slice.call(checkedList);
-    var toRm = [];
+    var toCkd = [];
     try {
       checkedList.map((item, ckdIndex) => {
         if (item.childNodes[0].checked === true) {
-          toRm.push(item.childNodes[0].value);
+          toCkd.push(item.childNodes[0].value);
           delete item[ckdIndex];
         }
       });
+
+      if(event.target.value !== "cmp")
+      {
+        setCheckList(toCkd[0]+","+toCkd[1]+","+toCkd[2]);
+        console.log(checkList);
+        
+      }
+      else
+      if(event.target.value !== "rm")
+      {
+
+      
 
       var ckie = document.cookie;
       ckie = ckie.split(",");
 
       ckie.map((ckieItem, ckieIndex) => {
-        toRm.map((toRmItem) => {
+        toCkd.map((toRmItem) => {
           if (ckieItem === toRmItem) {
             delete ckie[ckieIndex];
           }
@@ -58,10 +97,8 @@ const Settings = (props) => {
         return el !== "";
       });
       if (ckie.length !== 0) {
-        console.log(ckie);
         document.cookie =
           "" + ckie + ";expires=" + 30 * 24 * 60 * 60 * 1000 + ";path=/";
-        console.log(document.cookie);
         setList(list);
         GetSymInfo(document.cookie).then((symList) => {
           return props.setSymList(symList[1]);
@@ -71,12 +108,14 @@ const Settings = (props) => {
         document.cookie =
           "" + "," + ";expires=" + 30 * 24 * 60 * 60 * 1000 + ";path=/";
       }
+    }
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
+    
     <div style={{ display: props.settings }} id="sideSet">
       <button
         className="CollapseBtn"
@@ -87,14 +126,21 @@ const Settings = (props) => {
         Stock List
       </button>
 
+
       <div className="collapse" id="sideSelect">
         {list}
         <div className="optionsBTN">
-          <div id="btnCmp">Compare</div>
-          <div id="btnRm" onClick={removeHandle}>
+        
+           
+          <div id="btnCmp" onClick={clickedHandle} value="cmp">
+            <Link to={"/compare/"+checkList }>Compare</Link>
+          </div>
+          
+          <div id="btnRm" onClick={clickedHandle} value="rm">
             Remove
           </div>
-          <div id="btnAlz">Analize</div>
+
+          
         </div>
       </div>
 

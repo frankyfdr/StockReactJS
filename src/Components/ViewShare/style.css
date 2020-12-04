@@ -1,5 +1,6 @@
 .shareBox {
-  width: 300px;
+  display: flex;
+  width: 350px;
   height: 80px;
   background: rgb(206, 199, 199);
   border-radius: 20px;
@@ -11,22 +12,42 @@
   position: relative;
   padding: 7px 0px 10px 20px;
   float: right;
-  width: 200px;
+  width: 250px;
+  border-radius: 20px;
   height: 80px;
   background: rgb(206, 199, 199);
-  border-radius: 20px;
+
   font-size: 10px;
   font-weight: bold;
   color: black;
   box-shadow: 10px 2px 19px 6px rgba(0, 0, 0, 0.28);
   display: flex-inline;
 }
-.imgBox {
-  float: left;
+
+.NameBox {
+  position: relative;
+  transition: width 0.6s;
+  text-align: center;
   width: 30%;
   height: 100%;
   border-radius: 20px;
   box-shadow: 10px 2px 19px 6px rgba(0, 0, 0, 0.28);
+  z-index: 3;
+}
+.shareBox:hover .infoText {
+  visibility: hidden;
+  width: 0px;
+}
+.shareBox:hover .NameBox {
+  width: 100%;
+}
+.symName {
+  margin-top: 25%;
+  text-align: center;
+  width: auto;
+  color: rgba(0, 0, 0, 0.656);
+  font-size: 15px;
+  overflow: hidden;
 }
 .txtPrice {
   font-weight: bold;
@@ -45,6 +66,8 @@
 }
 .txtNome {
   display: inline-block;
+  font-size: 15px;
+  color: rgb(73, 72, 72);
 }
 .stockLogo {
   position: relative;

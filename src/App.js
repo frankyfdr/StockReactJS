@@ -1,40 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
+import Routes from "./Routes";
 import "./style.css";
 import Header from "./Components/Header";
 import Search from "./Components/search";
 import Show from "./Components/Show/Show.js";
 import { GetSymInfo } from "./Components/API/GetSym";
 import Settings from "./Components/Settings";
-import { UserContext } from "./Context";
 import { GetLogo } from "./Components/API/GetLogo";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   const [displaySettings, setDisplaySettings] = useState("none");
   const [symList, setSymList] = useState([]);
   const [rendimento, setRendimento] = useState(0);
-  const [listCnt, setListCnt] = useState([]);
+  const [listCnt, setListCnt] = useState([0]);
   const [logoList, setLogoList] = useState([]);
   const [fistTimeRun, setFirstTimeRun] = useState(true);
-  const [nodejs] = useState("https://frankyfdr-api.herokuapp.com");
+  const [nodejs] = useState("http://localhost:3001");
   useEffect(() => {
     setInterval(() => load(), 2000);
 
-    if (fistTimeRun === true) {
-      let list = logoList;
-      let cookie = document.cookie;
-      cookie = cookie.split(",");
-      cookie.map((item) => {
-        if (item !== "") {
-          GetLogo(item, logoList, nodejs).then((logo) => {
-            list[item] = logo;
-          });
-        }
-      });
-
-      setLogoList(list);
-      setFirstTimeRun(false);
-    }
     //load();
     // eslint-disable-next-line no-use-before-define
   }, []);
@@ -42,14 +28,19 @@ const App = () => {
   const load = () => {
     var ckie = document.cookie;
     if (ckie !== "")
-      GetSymInfo(ckie, "", logoList, nodejs).then((list) => {
+    {
+      GetSymInfo(ckie, nodejs).then((list) => {
         return setRendimento(list[0]) + setSymList(list[1]);
       });
+    } else
+    {
+       document.cookie = "NFLX,AMZN,AAPL,GOOGL,KO,MCD,MSFT,TSLA,SNE;expires=Thu, 18 Dec 2030 12:00:00 UTC;path=/";
+    }
   };
 
   return (
     <div>
-      <UserContext.Provider>
+       
         <Header />
         <Search
           nodejs={nodejs}
@@ -61,14 +52,21 @@ const App = () => {
           symList={symList}
           setRendimento={setRendimento}
         />
-        <Show list={symList} listCnt={listCnt} setListCnt={setListCnt} />
-        <Settings
+        <BrowserRouter>
+           <Settings
           setSymList={setSymList}
           rendimento={rendimento}
           settings={displaySettings}
           list={symList}
         />
-      </UserContext.Provider>
+        <Routes list={symList} listCnt={listCnt} setListCnt={setListCnt}/>
+        </BrowserRouter>
+       
+        
+        
+     
+       
+     
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import ViewShare from "../ViewShare";
 
-export const GetSymInfo = (sym, logo, logoList, nodejs) => {
+export const GetSymInfo = (sym, nodejs) => {
   return axios.get(nodejs + "/info/" + sym).then((data) => {
     try {
       data = data.data.quoteResponse.result;
@@ -15,17 +15,22 @@ export const GetSymInfo = (sym, logo, logoList, nodejs) => {
           status = "loser";
         }
         rendimentoPerc = rendimentoPerc + item.regularMarketChangePercent;
-        let imgSrc = ""; //logoList[sym];
-        if (logo !== "") {
-          imgSrc = logo;
+       
+        let name = item.displayName;
+        if (name === undefined) {
+          name = item.longName;
         }
         return (
           <ViewShare
-            imgSrc={imgSrc}
-            logoList={logoList}
+            dayLow={item.regularMarketDayLow}
+            dayHigh={item.regularMarketDayHigh}
+            PriceOpen={item.regularMarketOpen}
+            PriceClose={item.regularMarketPreviousClose}
+            imgSrc={""}
+            logoList={""}
             key={item.symbol}
             status={status}
-            name={item.longName + " (" + item.symbol + ")"}
+            name={name}
             price={item.regularMarketPrice.toFixed(2)}
             change={
               item.regularMarketChange.toFixed(2) +

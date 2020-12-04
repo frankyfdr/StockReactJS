@@ -4,7 +4,6 @@ import "./style.css";
 import settingsIco from "../../img/settings.png";
 import { GetSymInfo } from "../API/GetSym";
 import { GetLogo } from "../API/GetLogo";
-import e from "cors";
 
 export default class SearchBar extends React.Component {
   //--------constructor-------------
@@ -15,6 +14,7 @@ export default class SearchBar extends React.Component {
       searchList: [],
       displaySearchList: "none",
       displaySettings: "none",
+      exchange: "",
     };
   }
 
@@ -38,15 +38,15 @@ export default class SearchBar extends React.Component {
           if (response.status === 200) {
             response = response.data.finance.result[0].documents;
             var list = response.map((item) => {
-              return (
-                <option
-                  id={item.symbol}
-                  onClick={this.selectHandle}
-                  key={item.symbol}
-                >
-                  ( {item.symbol} ) {item.shortName}
-                </option>
-              );
+            return (
+                  <option
+                    id={item.symbol}
+                    onClick={this.selectHandle}
+                    key={item.symbol}
+                  >
+                    ( {item.symbol} ) {item.shortName}
+                  </option>
+                );
             });
             this.setState({ searchList: list });
           }
@@ -71,16 +71,11 @@ export default class SearchBar extends React.Component {
   Searching = async (sym) => {
     if (sym !== "") {
       try {
-        let logo = await GetLogo(sym, this.props, this.props.nodejs);
-        let list = this.props.logoList;
-        list[sym] = logo;
-
-        GetSymInfo(sym, logo, this.props.logoList, this.props.nodejs).then(
+          GetSymInfo(sym, this.props.nodejs).then(
           (info) => {
             this.props.setList(info[1]);
           }
         );
-        this.props.setLogoList(list);
       } catch (e) {
         console.log("/search/Searching error: ", e);
       } finally {
@@ -100,28 +95,30 @@ export default class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <div id="searchBar">
-          <form autoComplete="off" onSubmit={this.mySubmitHandler}>
-            <input
-              onChange={this.myChangeHandler}
-              onKeyDown={this.isEnter}
-              id="inputT"
-              type="text"
-              value={this.state.sym}
-            ></input>
+     
+        <div className="searchBox">
+         
+            <form autoComplete="off" onSubmit={this.mySubmitHandler}>
+              <input
+                onChange={this.myChangeHandler}
+                onKeyDown={this.isEnter}
+                id="inputT"
+                type="text"
+                value={this.state.sym}
+              ></input>
+              <input id="searchBtn" type="submit" value="Search" />
+            </form>
 
-            <input id="searchBtn" type="submit" value="Search" />
-          </form>
+            <div id="settings">
+              <img
+                alt=""
+                onClick={this.handleSettingsClick}
+                id="ico"
+                src={settingsIco}
+              />
+            </div>
+     
 
-          <div id="settings">
-            <img
-              alt=""
-              onClick={this.handleSettingsClick}
-              id="ico"
-              src={settingsIco}
-            />
-          </div>
           <select
             style={{ display: this.state.displaySearchList }}
             id="searchList"
@@ -130,7 +127,7 @@ export default class SearchBar extends React.Component {
             {this.state.searchList}
           </select>
         </div>
-      </div>
+     
     );
   }
 }

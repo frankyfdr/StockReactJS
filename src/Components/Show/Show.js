@@ -3,14 +3,16 @@ import "./style.css";
 import { GetLogo } from "../API/GetLogo";
 
 const Show = (props) => {
+  if(props.list !== undefined || props.list.length === 0) 
+  {
   try {
     var cntw = props.list.winner.length;
     var cntl = props.list.loser.length;
     if (props.listCnt.cntl !== cntl || props.listCnt.cntw !== cntw) {
-      GetLogo();
+      
       props.setListCnt({ cntl, cntw });
     }
-  } catch (e) {}
+ 
   return (
     <div className="Show" id="show">
       <div>
@@ -27,6 +29,11 @@ const Show = (props) => {
       </div>
     </div>
   );
-};
-
+  
+    }catch (e) {}
+  }
+  else
+    return <div> Nothing to</div>;
+  
+}
 export default Show;
