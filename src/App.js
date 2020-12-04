@@ -43,7 +43,6 @@ const App = () => {
     <div>
        
         <Header />
-       <div>{ document.cookie}</div>
         <Search
           nodejs={nodejs}
           logoList={logoList}
