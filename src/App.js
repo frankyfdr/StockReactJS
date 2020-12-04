@@ -17,57 +17,55 @@ const App = () => {
   const [listCnt, setListCnt] = useState([0]);
   const [logoList, setLogoList] = useState([]);
   const [fistTimeRun, setFirstTimeRun] = useState(true);
-  const [nodejs] = useState("https://frankyfdr-api.herokuapp.com");
+  const [nodejs] = useState("https://frankyfdr.vercel.app");
   useEffect(() => {
     setInterval(() => load(), 2000);
 
-   
+
   }, []);
 
   const load = () => {
     var ckie = document.cookie;
-   
-    if (ckie !== "")
-    {
+
+    if (ckie !== "") {
       GetSymInfo(ckie, nodejs).then((list) => {
         return setRendimento(list[0]) + setSymList(list[1]);
       });
-    } else
-    {
+    } else {
       document.cookie = "NFLX,AMZN,AAPL,GOOGL,KO,MCD,MSFT,TSLA,SNE;expires=Thu, 18 Dec 2030 12:00:00 UTC;path=/";
-      
+
     }
   };
 
   return (
     <div>
-       
-        <Header />
-        <Search
-          nodejs={nodejs}
-          logoList={logoList}
-          setLogoList={setLogoList}
-          settings={displaySettings}
-          setSettings={setDisplaySettings}
-          setList={setSymList}
-          symList={symList}
-          setRendimento={setRendimento}
-        />
-        <BrowserRouter>
-           <Settings
+
+      <Header />
+      <Search
+        nodejs={nodejs}
+        logoList={logoList}
+        setLogoList={setLogoList}
+        settings={displaySettings}
+        setSettings={setDisplaySettings}
+        setList={setSymList}
+        symList={symList}
+        setRendimento={setRendimento}
+      />
+      <BrowserRouter>
+        <Settings
           setSymList={setSymList}
           rendimento={rendimento}
           settings={displaySettings}
           list={symList}
         />
-        <Routes list={symList} listCnt={listCnt} setListCnt={setListCnt}/>
-        </BrowserRouter>
-       
-        
-        
-     
-       
-     
+        <Routes list={symList} listCnt={listCnt} setListCnt={setListCnt} />
+      </BrowserRouter>
+
+
+
+
+
+
     </div>
   );
 };
