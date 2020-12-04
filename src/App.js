@@ -17,7 +17,7 @@ const App = () => {
   const [listCnt, setListCnt] = useState([0]);
   const [logoList, setLogoList] = useState([]);
   const [fistTimeRun, setFirstTimeRun] = useState(true);
-  const [nodejs] = useState("http://localhost:3001");
+  const [nodejs] = useState("https://node-js-peach.vercel.app:3001");
   useEffect(() => {
     setInterval(() => load(), 2000);
 
