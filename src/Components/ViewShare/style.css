@@ -34,6 +34,7 @@
   box-shadow: 10px 2px 19px 6px rgba(0, 0, 0, 0.28);
   z-index: 3;
 }
+/*
 .shareBox:hover .infoText {
   visibility: hidden;
   width: 0px;
@@ -41,6 +42,7 @@
 .shareBox:hover .NameBox {
   width: 100%;
 }
+*/
 .symName {
   margin-top: 25%;
   text-align: center;
@@ -55,6 +57,7 @@
   color: rgb(7, 7, 7);
   text-shadow: -1px -1px 1px rgba(241, 241, 241, 0.1),
     1px 1px 1px rgba(255, 255, 255, 0.5);
+  margin-right: 10px;
 }
 .Cgreen {
   color: rgb(21, 175, 21);

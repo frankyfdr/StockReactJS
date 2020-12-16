@@ -1,39 +1,57 @@
-import React from "react";
+import React,{useState} from "react";
 import "./style.css";
-import { GetLogo } from "../API/GetLogo";
+import ViewShare from "../ViewShare";
 
-const Show = (props) => {
-  if(props.list !== undefined || props.list.length === 0) 
-  {
-  try {
-    var cntw = props.list.winner.length;
-    var cntl = props.list.loser.length;
-    if (props.listCnt.cntl !== cntl || props.listCnt.cntw !== cntw) {
-      
-      props.setListCnt({ cntl, cntw });
-    }
- 
-  return (
-    <div className="Show" id="show">
-      <div>
-        <div className="titleWinners">Top Winners</div>
-        <div className="winners" id="idWinner">
-          {props.list.winner}
-        </div>
-      </div>
-      <div>
-        <div className="titleLosers">Top Losers</div>
-        <div className="losers" id="idLooser">
-          {props.list.loser}
-        </div>
-      </div>
-    </div>
-  );
+
+const Show = (props) => 
+{
+  const [symInfo, setSymInfo] = useState(props.symInfo);
+var loser = [];
+var winner = [];
   
-    }catch (e) {}
-  }
+ symInfo.map((item) =>{
+   
+  if(item.change < 0)
+    loser.push(<ViewShare key={item.sym} color={"Cred"} name={item.name} sym={item.sym} price={item.price} change={item.change} percent={item.percent} />)
   else
-    return <div> Nothing to</div>;
-  
+    winner.push(<ViewShare key={item.sym}  color={"Cgreen"} name={item.name} sym={item.sym} price={item.price} change={item.change} percent={item.percent} />)
+
+
+  })
+  OrderByAsc(winner,loser);
+  return (<div className="Show" id="show">
+  <div>
+    <div className="titleWinners">Top Winners</div>
+    <div className="winners" id="idWinner">
+      {winner}
+    </div>
+  </div>
+  <div>
+    <div className="titleLosers">Top Losers</div>
+    <div className="losers" id="idLooser">
+      {loser}
+    </div>
+  </div>
+</div>)
+}
+
+const  OrderByAsc = (winner, loser) => {
+
+  loser.sort((a, b) =>
+    a.props.percent < b.props.percent
+      ? 1
+      : b.props.percent < a.props.percent
+      ? -1
+      : 0
+  );
+
+  winner.sort((a, b) =>
+    a.props.percent < b.props.percent
+      ? 1
+      : b.props.percent < a.props.percent
+      ? -1
+      : 0
+  );
+ 
 }
 export default Show;

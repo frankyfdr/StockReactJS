@@ -3,62 +3,65 @@ import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
 import "./style.css";
 import Header from "./Components/Header";
-import Search from "./Components/search";
+import Search from "./Components/Search/index.js";
 import Show from "./Components/Show/Show.js";
 import { GetSymInfo } from "./Components/API/GetSym";
 import Settings from "./Components/Settings";
 import { GetLogo } from "./Components/API/GetLogo";
 import { BrowserRouter } from "react-router-dom";
+import Login from "./Components/LoginForm/Login.js"
 
 const App = () => {
-  const [displaySettings, setDisplaySettings] = useState("none");
-  const [symList, setSymList] = useState([]);
   const [rendimento, setRendimento] = useState(0);
-  const [listCnt, setListCnt] = useState([0]);
-  const [logoList, setLogoList] = useState([]);
-  const [fistTimeRun, setFirstTimeRun] = useState(true);
-  const [nodejs] = useState("https://frankyfdr.vercel.app");
+
+  const [symInfo, setSymInfo] = useState([]);
+ //const [nodejs] = useState("https://frankyfdr.vercel.app");
+  const [nodejs] = useState("http://localhost:3001");
+  const [nameUser, setNameUser] = useState("default");
+  const [username, setUsername] = useState([]);
+  const [emailUser, setEmailUser] = useState([]);
+  const [symUser, setSymUser] = useState("NFLX,AMZN,AAPL,GOOGL,KO,MCD,ADS.DE,MSFT,TSLA,SNE");
+  const [refresh,setRefresh] = useState();
   useEffect(() => {
-    setInterval(() => load(), 2000);
 
+    setRefresh(setInterval(() => load(refresh), 2000));
+      
+  }, [symUser]);
 
-  }, []);
-
-  const load = () => {
-    var ckie = document.cookie;
-
-    if (ckie !== "") {
-      GetSymInfo(ckie, nodejs).then((list) => {
-        return setRendimento(list[0]) + setSymList(list[1]);
+   const  load = async (refresh) => 
+  {
+    if (symUser !== "") 
+    {
+       await GetSymInfo(symUser, nodejs).then((list) =>
+      {
+        setSymInfo(list);
+        //setRendimento(list[0]) + setSymList(list[1]);
       });
-    } else {
-      document.cookie = "NFLX,AMZN,AAPL,GOOGL,KO,MCD,MSFT,TSLA,SNE;expires=Thu, 18 Dec 2030 12:00:00 UTC;path=/";
-
-    }
-  };
+    } 
+  }
+  
 
   return (
     <div>
-
+      <Login refresh={refresh} setName={setNameUser} setEmail={setEmailUser} setSymUser={setSymUser} setUsername={setUsername} />
       <Header />
+     
+      <BrowserRouter>
       <Search
-        nodejs={nodejs}
-        logoList={logoList}
-        setLogoList={setLogoList}
-        settings={displaySettings}
-        setSettings={setDisplaySettings}
-        setList={setSymList}
-        symList={symList}
+        refresh={refresh}
+        nameUser={nameUser}
+        nodejs={nodejs}  
+        username={username}
+        setSymList={setSymUser}
+        symUser={symUser}
         setRendimento={setRendimento}
       />
-      <BrowserRouter>
         <Settings
-          setSymList={setSymList}
+          setSymList={setSymUser}
           rendimento={rendimento}
-          settings={displaySettings}
-          list={symList}
+          list={symInfo}
         />
-        <Routes list={symList} listCnt={listCnt} setListCnt={setListCnt} />
+        <Routes symInfo={symInfo} list={symUser} server={nodejs} />
       </BrowserRouter>
 
 

@@ -1,0 +1,78 @@
+:root {
+  --signup: none;
+}
+html,
+body {
+  height: 100%;
+}
+.effectMode {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.835);
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+  height: 200%;
+  width: 100%;
+}
+.Contain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 4;
+  align-items: center;
+}
+
+.loginContain {
+  position: relative;
+  width: 400px;
+  height: auto;
+  border-radius: 12px;
+  padding-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-flex;
+  background-color: rgba(0, 0, 0, 0.41);
+  z-index: 5;
+  border: 3px solid #f1f1f1;
+  padding: 30px;
+}
+.lform {
+  position: relative;
+  display: block;
+  height: auto;
+}
+.inputfield,
+.signUpfield,
+.btns {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 80%;
+}
+.btns {
+  display: flex;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.signUpfield {
+  display: var(--signup);
+}
+label {
+  font-weight: bolder;
+  font-size: 15px;
+  color: white;
+}
+.close {
+  position: absolute;
+  float: right;
+  color: white;
+  margin-left: 7px;
+  margin-left: 7px;
+  z-index: 9;
+}
+#loginbtn {
+  margin-right: 5px;
+}

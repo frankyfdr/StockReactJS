@@ -6,11 +6,15 @@
   right: 5px;
   background-color: rgba(0, 0, 0, 0.801);
   border-radius: 10px;
-  display: block;
+  display: none;
   color: white;
   padding-top: 20px;
   border-radius: 10px;
   z-index: 3;
+}
+
+#sideSet::-moz-focus-outer {
+  display: none;
 }
 .inputCk {
   margin-right: 5px !important;
@@ -29,6 +33,7 @@
 .ListSym:hover {
   background-color: rgb(161, 140, 140);
 }
+
 .CollapseBtn {
   color: white;
   background-color: rgba(0, 0, 0, 0);

@@ -3,8 +3,9 @@ import axios from "axios";
 import "./style.css";
 import settingsIco from "../../img/settings.png";
 import { GetSymInfo } from "../API/GetSym";
-import { GetLogo } from "../API/GetLogo";
-
+import loginimg from "../../img/login.png";
+import { Link } from "react-router-dom";
+import Rightinfo from "../RightInfo/Rightinfo.js";
 export default class SearchBar extends React.Component {
   //--------constructor-------------
   constructor(props) {
@@ -70,18 +71,10 @@ export default class SearchBar extends React.Component {
   };
   Searching = async (sym) => {
     if (sym !== "") {
-      try {
-          GetSymInfo(sym, this.props.nodejs).then(
-          (info) => {
-            this.props.setList(info[1]);
-          }
-        );
-      } catch (e) {
-        console.log("/search/Searching error: ", e);
-      } finally {
-      }
+     
+    this.props.setSymUser("nada");
 
-      //console.log(this.props.logoList);
+    console.log(this.props.symUser);
 
       this.setState({ displaySearchList: "none" });
     }
@@ -95,9 +88,7 @@ export default class SearchBar extends React.Component {
 
   render() {
     return (
-     
         <div className="searchBox">
-         
             <form autoComplete="off" onSubmit={this.mySubmitHandler}>
               <input
                 onChange={this.myChangeHandler}
@@ -110,6 +101,9 @@ export default class SearchBar extends React.Component {
             </form>
 
             <div id="settings">
+            
+           <Rightinfo name={this.props.nameUser} />
+           
               <img
                 alt=""
                 onClick={this.handleSettingsClick}
@@ -117,8 +111,6 @@ export default class SearchBar extends React.Component {
                 src={settingsIco}
               />
             </div>
-     
-
           <select
             style={{ display: this.state.displaySearchList }}
             id="searchList"

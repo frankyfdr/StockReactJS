@@ -1,7 +1,17 @@
 import React from "react";
-import "../search";
+import "../Search";
 import "./style.css";
 
-const Header = () => <header id="main-header">Stock Analysis</header>;
+import Login from "../LoginForm/Login.js"
 
+const Header = () => 
+{
+const loginForm =() => <Login />
+
+return(
+<div className="headerContain">
+    <header id="main-header">Stock Analysis</header>
+</div>
+)
+}
 export default Header;

@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./style.css"
-import {useLocation} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 
@@ -12,12 +11,14 @@ const App = (props) =>
 {
 
   const [keyRatios, setKeyRatios] = useState([0,0,0]);
-  let sym = props.match.params.sym.split(',');
+  
  
   async function getKeyRatios ()  {
-    const share1 = axios.get("http://localhost:3001/key/"+sym[0]);
-    const share2 = axios.get("http://localhost:3001/key/"+sym[1]);
-    const share3 = axios.get("http://localhost:3001/key/"+sym[2]);
+    console.log(props.match.params);
+    var sym = props.match.params.sym.split(',');
+    const share1 = axios.get("https://frankyfdr.vercel.app/key/"+sym[0]);
+    const share2 = axios.get("https://frankyfdr.vercel.app/key/"+sym[1]);
+    const share3 = axios.get("https://frankyfdr.vercel.app/key/"+sym[2]);
     let result = await axios.all([share1,share2,share3]).then(axios.spread((...data) =>
     {
       return [data[0].data,data[1].data,data[2].data];
@@ -68,12 +69,7 @@ return(<div>
         <div className="sideLegend">All Rounders
         </div>
     </div>
-    <div className="KeyRatioLegend">
-      <div className="KeyRleg" id="EPS"  onClick={(id) => selectRow("EPS",id)}> EPS </div> 
-      <div className="KeyR" id="EPS" name="EPS"  onClick={(id) => selectRow("EPS",id)}> {keyRatios[0].EPS}</div>
-      <div className="KeyR" id="EPS"  name ="EPS" onClick={(id) => selectRow("EPS",id)}> {keyRatios[1].EPS}</div> 
-      <div className="KeyR" id="EPS"  name ="EPS" onClick={(id) => selectRow("EPS",id)}> {keyRatios[2].EPS}</div>  
-    </div>
+ 
     </div>
 
 
@@ -89,6 +85,12 @@ return(<div>
         <div className="KeyR" name = "ROE"> {keyRatios[1].ROE} </div> 
         <div className="KeyR" name = "ROE"> {keyRatios[2].ROE} </div> 
       </div>
+      <div className="KeyRatioLegend">
+      <div className="KeyRleg" id="EPS"  onClick={(id) => selectRow("EPS",id)}> EPS </div> 
+      <div className="KeyR" id="EPS" name="EPS"  onClick={(id) => selectRow("EPS",id)}> {keyRatios[0].EPS}</div>
+      <div className="KeyR" id="EPS"  name ="EPS" onClick={(id) => selectRow("EPS",id)}> {keyRatios[1].EPS}</div> 
+      <div className="KeyR" id="EPS"  name ="EPS" onClick={(id) => selectRow("EPS",id)}> {keyRatios[2].EPS}</div>  
+    </div>
     </div>
     </div>
 
