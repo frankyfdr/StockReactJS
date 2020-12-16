@@ -9,7 +9,10 @@ import Login from "./Components/LoginForm/Login.js";
 const Routes = (props) => (
     
     <Switch>
-        <Route path="/compare/:sym" component={Compare} />  
+        <Route path="/compare/:sym" component={() => { 
+
+            return ( <Compare nodejs={props.nodejs} />)
+        }} />  
         <Route path="/login" component={Login} />  
         <Route  exact path="/" component={() => 
         {

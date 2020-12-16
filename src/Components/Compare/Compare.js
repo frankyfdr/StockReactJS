@@ -16,9 +16,9 @@ const App = (props) =>
   async function getKeyRatios ()  {
     console.log(props.match.params);
     var sym = props.match.params.sym.split(',');
-    const share1 = axios.get("https://frankyfdr.vercel.app/key/"+sym[0]);
-    const share2 = axios.get("https://frankyfdr.vercel.app/key/"+sym[1]);
-    const share3 = axios.get("https://frankyfdr.vercel.app/key/"+sym[2]);
+    const share1 = axios.get( props.nodejs+"/key/"+sym[0]);
+    const share2 = axios.get(props.nodejs+"/key/"+sym[1]);
+    const share3 = axios.get(props.nodejs+"/key/"+sym[2]);
     let result = await axios.all([share1,share2,share3]).then(axios.spread((...data) =>
     {
       return [data[0].data,data[1].data,data[2].data];

@@ -15,8 +15,8 @@ const App = () => {
   const [rendimento, setRendimento] = useState(0);
 
   const [symInfo, setSymInfo] = useState([]);
- //const [nodejs] = useState("https://frankyfdr.vercel.app");
-  const [nodejs] = useState("http://localhost:3001");
+ const [nodejs] = useState("https://frankyfdr.vercel.app");
+ // const [nodejs] = useState("http://localhost:3001");
   const [nameUser, setNameUser] = useState("default");
   const [username, setUsername] = useState([]);
   const [emailUser, setEmailUser] = useState([]);
@@ -61,7 +61,7 @@ const App = () => {
           rendimento={rendimento}
           list={symInfo}
         />
-        <Routes symInfo={symInfo} list={symUser} server={nodejs} />
+        <Routes symInfo={symInfo} nodejs={nodejs} list={symUser} server={nodejs} />
       </BrowserRouter>
 
 
