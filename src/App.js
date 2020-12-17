@@ -43,7 +43,7 @@ const App = () => {
 
   return (
     <div>
-      <Login refresh={refresh} setName={setNameUser} setEmail={setEmailUser} setSymUser={setSymUser} setUsername={setUsername} />
+      <Login refresh={refresh} nodejs={nodejs} setName={setNameUser} setEmail={setEmailUser} setSymUser={setSymUser} setUsername={setUsername} />
       <Header />
      
       <BrowserRouter>

@@ -19,7 +19,7 @@ const Login = (props) =>
 
        if(email != "" && pass != "" && user != "" &&name != "")
        {
-       axios.post("http://localhost:3001/api/users",
+       axios.post(props.nodejs+"/api/users",
        {
            "username": user,
            "password": pass,
@@ -49,7 +49,7 @@ const Login = (props) =>
 
     const  loginHandler = (event) =>
     {
-        axios.post("http://localhost:3001/api/login",
+        axios.post(props.nodejs +"/api/login",
         {
             "username": user,
             "password": pass,
