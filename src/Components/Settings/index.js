@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 
+
 const Settings = (props) => {
   
   const [list, setList] = useState();
   const [checkList, setCheckList] = useState("");
   
-
   useEffect(() => {
     if (props.list != null) {
       ShowSymList();
@@ -18,6 +18,7 @@ const Settings = (props) => {
 
   const ShowSymList = () => 
   {
+    
      var list = props.list.map((item) => 
      {
         return (
@@ -40,13 +41,12 @@ const Settings = (props) => {
       else
       setCheckList(event.target.value);
     }
-    console.log(event.target.value)
   }
 
 
   return (
-    
-    <div id="sideSet">
+    <div id="set-container" class="set-container">
+    <div id="sideSet" >
       <button
         className="CollapseBtn"
         data-toggle="collapse"
@@ -80,6 +80,7 @@ const Settings = (props) => {
       <div id="status" className="collapse">
         <p>Rendimento diario: {props.rendimento}</p>
       </div>
+    </div>
     </div>
   );
 };
