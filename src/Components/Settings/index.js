@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 
-
 const Settings = (props) => {
   
   const [list, setList] = useState();
@@ -45,8 +44,8 @@ const Settings = (props) => {
 
 
   return (
-    <div id="set-container" class="set-container">
-    <div id="sideSet" >
+    
+    <div id="sideSet" style={{ display: props.display}}>
       <button
         className="CollapseBtn"
         data-toggle="collapse"
@@ -80,7 +79,6 @@ const Settings = (props) => {
       <div id="status" className="collapse">
         <p>Rendimento diario: {props.rendimento}</p>
       </div>
-    </div>
     </div>
   );
 };

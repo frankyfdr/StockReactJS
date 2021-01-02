@@ -10,16 +10,20 @@ const Login = (props) =>
     const [pass, setPass] = useState('')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [error, setErro] = useState("")
+    const [errorSignUp, setErroSignUp] = useState("")
 
-   const signup= (event) =>
+
+
+
+  const signup= (event) =>
    {
        let root = document.documentElement;
        root.style.setProperty('--signup', 'block');
        document.getElementById("loginbtn").style.display = "none";
-
        if(email != "" && pass != "" && user != "" &&name != "")
        {
-       axios.post(props.nodejs+"/api/users",
+       axios.post(props.nodejs+"/api/signup",
        {
            "username": user,
            "password": pass,
@@ -29,7 +33,20 @@ const Login = (props) =>
            
        })
          .then((data) => {
-            getUserInfo(data);
+          
+          if(data.data === true) 
+          {
+            props.setName(name);
+            props.setEmail(email);
+            props.setUsername(user);
+            closeHandle(event);
+          }
+          else
+          if(data.data === 3)
+          {
+            document.getElementById("user").style.border = "2px solid red";
+            setErroSignUp("Username already exists!");
+          }
          }, (error) => {
            console.log(error);
          });
@@ -47,7 +64,7 @@ const Login = (props) =>
     e.preventDefault();
    }
 
-    const  loginHandler = (event) =>
+    const  loginHandler =  (event) =>
     {
         axios.post(props.nodejs +"/api/login",
         {
@@ -56,11 +73,19 @@ const Login = (props) =>
             
         })
           .then((data) => {
-              if(data.data != false)
+              if(data.data !== false && data.data !== 3)
               {
-                getUserInfo(data.data[0]);
-                  
+                getUserInfo(data.data);
+                closeHandle(event);
+                setErro("");
               }
+              else
+                if(data.data === 3)
+                  setErro("Username do not exist!");
+                  else
+                  if(data.data ===false)
+                  setErro("Username or password invalid!");
+
           }, (error) => {
             console.log(error);
           });
@@ -81,15 +106,18 @@ const Login = (props) =>
         <div className="effectMode"></div>
     <div className="loginContain">
         <div className="close" onClick={closeHandle}>x</div>
+        
     <form className="lform" onSubmit={loginHandler}>
+    <label className="errorSignUp">{errorSignUp}</label>
         <label className="inputfield" >Username</label>
-        <input className="inputfield" onChange={(e) => setUser(e.target.value)} type="text" />
+        <input id="user" className="inputfield" onChange={(e) => setUser(e.target.value.toLowerCase())} type="text" />
         <label className="signUpfield" >Full Name</label>
         <input className="signUpfield" onChange={(e) => setName(e.target.value)} type="text" />
         <label className="signUpfield" >Email</label>
-        <input className="signUpfield" onChange={(e) => setEmail(e.target.value)} type="text" />
-        <label className="inputfield" >Password</label>
-        <input className="inputfield" onChange={(e) => setPass(e.target.value)} type="password" />
+        <input className="signUpfield" onChange={(e) => setEmail(e.target.value.toLowerCase())} type="text" />
+        <label  className="inputfield" >Password</label>
+        <input id="pwd" className="inputfield" onChange={(e) => setPass(e.target.value)} type="password" />
+        <label className="errorMsg">{error} </label>
        <div className="btns">
             <button id="loginbtn" className="inputfield" type="submit">Login</button>
             <button id="signbtn" className="inputfield" type="button"

@@ -6,7 +6,8 @@
   justify-content: center;
   align-items: center;
 }
-#inputT {
+#inputT,
+#searchBtn {
   float: left;
   border-radius: 10px 0px 0px 10px;
   width: 70%;
@@ -15,6 +16,7 @@
   border: 1px rgb(204, 186, 186) solid;
   background-color: rgba(190, 190, 190, 0.747);
   color: rgb(107, 107, 107);
+  border: none;
 }
 .searchBox {
   display: flex;

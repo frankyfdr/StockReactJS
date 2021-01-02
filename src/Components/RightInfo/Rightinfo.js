@@ -3,21 +3,25 @@ import axios from "axios";
 import "./style.css";
 import settingsIco from "../../img/settings.png";
 import loginimg from "../../img/login.png";
-
+import Settings from "../Settings"
 const Rightinfo = (props) =>
 {
-const handleSettingsClick = () => 
+  
+const [display, setDisplay] = useState("none");
+const handleSettingsClick = (e) => 
 {
-   
-    var display = document.getElementById("sideSet").style.display = "block";
-    
+  if(display === "none"){
+    setDisplay("block");
+  }
+  else
+  setDisplay("none");
 
-
+  e.preventDefault();
 }
-
+    
   return (
-    <div >
-    <label style={{color: 'black'}} > logged: {props.name}</label>
+    <div className="lowMenu">
+    <label style={{color: 'black'}} >{(props.name != "default") ? props.name : ''}</label>
     
     <img
     alt=""
@@ -34,7 +38,10 @@ const handleSettingsClick = () =>
     id="ico"
     src={settingsIco}
     />
-
+    <div className="settingsContainer">
+      <Settings list={props.list} display= {display}/>
+    </div>
+  
 
 </div>
         

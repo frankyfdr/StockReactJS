@@ -10,21 +10,24 @@ import Settings from "./Components/Settings";
 import { GetLogo } from "./Components/API/GetLogo";
 import { BrowserRouter } from "react-router-dom";
 import Login from "./Components/LoginForm/Login.js"
+import Rightinfo from "./Components/RightInfo/Rightinfo.js";
 
 const App = () => {
   const [rendimento, setRendimento] = useState(0);
 
   const [symInfo, setSymInfo] = useState([]);
- const [nodejs] = useState("https://frankyfdr.vercel.app");
- // const [nodejs] = useState("http://localhost:3001");
+  //const [nodejs] = useState("http://localhost:3001");
+  const [nodejs] = useState("https://api.frankyfdr.tk");
   const [nameUser, setNameUser] = useState("default");
   const [username, setUsername] = useState([]);
   const [emailUser, setEmailUser] = useState([]);
   const [symUser, setSymUser] = useState("NFLX,AMZN,AAPL,GOOGL,KO,MCD,ADS.DE,MSFT,TSLA,SNE");
+  //const [symUser, setSymUser] = useState("NFLX");
   const [refresh,setRefresh] = useState();
   useEffect(() => {
 
-    setRefresh(setInterval(() => load(refresh), 2000));
+   //setRefresh(setInterval(() => load(refresh), 2000));
+   load();  
       
   }, [symUser]);
 
@@ -55,13 +58,14 @@ const App = () => {
         setSymList={setSymUser}
         symUser={symUser}
         setRendimento={setRendimento}
-      />
-        <Settings
-          setSymList={setSymUser}
-          rendimento={rendimento}
+        rendimento={rendimento}
           list={symInfo}
-        />
-        <Routes symInfo={symInfo} nodejs={nodejs} list={symUser} server={nodejs} />
+      />
+
+        <Rightinfo setSymList={setSymUser}
+          rendimento={rendimento}
+          list={symInfo} name={nameUser} />
+        <Routes symInfo={symInfo} nodejs={nodejs} list={symUser} />
       </BrowserRouter>
 
 

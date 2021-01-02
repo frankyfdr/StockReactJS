@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./style.css";
-import Rightinfo from "../RightInfo/Rightinfo.js";
+
 
 
 const Seach = (props) => {
@@ -35,7 +35,7 @@ return (
         <input id="searchBtn" type="submit" value="Search" />
     </form>
 </div>
-<Rightinfo name={props.nameUser} />
+
 </div>
 )
 }

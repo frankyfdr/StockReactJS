@@ -16,11 +16,12 @@
   display: flex;
   flex-wrap: wrap;
 }
-.titleWinners,
-.titleLosers {
+.titleLosers,
+.titleWinners {
   text-align: center;
-  margin: 20px;
-  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
   border-radius: 30px;
   width: 100%;
 }
