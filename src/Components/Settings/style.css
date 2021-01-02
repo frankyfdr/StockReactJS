@@ -1,4 +1,4 @@
-.sideSet {
+/*.sideSet {
   position: absolute;
   width: 100%;
   max-width: 370px;
@@ -10,12 +10,37 @@
   padding-top: 20px;
   border-radius: 10px;
   z-index: 3;
-}
-.siteSet on {
+transform: translate(1px, 0px);}*/
+.settingsContainer {
+  position: absolute;
   width: 0%;
-  transform: translate(1px, 0px);
-  display: none;
+  max-width: 370px;
+  height: 80%;
+  margin: 1%, 1%, 1%, 2%;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.801);
+  color: #fff;
+  padding-top: 20px;
+  border-radius: 10px;
+  z-index: 3;
+  transform: translate(4px, 0px);
+  transition: 0.5s;
 }
+.settingsContainer.on {
+  position: absolute;
+  width: 100%;
+  max-width: 370px;
+  height: 80%;
+  margin: 1%, 1%, 1%, 2%;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.801);
+  color: #fff;
+  padding-top: 20px;
+  border-radius: 10px;
+  z-index: 3;
+  transition: 1s;
+}
+
 a,
 a:hover {
   text-decoration: none;
@@ -46,9 +71,9 @@ a:hover {
   color: white;
   background-color: rgba(0, 0, 0, 0);
   width: 99%;
-  height: 30px;
+  height: 2.4em;
   border: 1px solid rgb(187, 181, 181);
-  margin: 1.5px;
+  margin: 0.1em;
 }
 .CollapseBtn:hover {
   background-color: rgba(0, 0, 0, 0.5);

@@ -14,8 +14,8 @@ const App = (props) =>
   
  
   async function getKeyRatios ()  {
-    console.log(props.match.params);
-    var sym = props.match.params.sym.split(',');
+    console.log(props);
+    var sym = props.sym.sym.split(',');
     const share1 = axios.get( props.nodejs+"/key/"+sym[0]);
     const share2 = axios.get(props.nodejs+"/key/"+sym[1]);
     const share3 = axios.get(props.nodejs+"/key/"+sym[2]);
@@ -30,7 +30,7 @@ const App = (props) =>
   }
 
   useEffect(()=>{
-    getKeyRatios()
+    //getKeyRatios();
   },[])
  
 
@@ -51,12 +51,13 @@ const App = (props) =>
     cl[i].className = newClass;
   }
   }
-return(<div>
+return(
+<div >
 <div className="table">
 
 
 <div className="TopInfo">
-<div className="back"> <Link to="/" >voltar</Link></div>
+<div className="back"> <Link to="/" >Back</Link></div>
 <div className="stockName"><p>{keyRatios[0].Name}</p> <p>{keyRatios[0].Price} | {keyRatios[0].Change}%</p></div>
       <div className="stockName"><p>{keyRatios[1].Name}</p> <p>{keyRatios[1].Price} | {keyRatios[1].Change}%</p></div>
     <div className="stockName"><p>{keyRatios[2].Name}</p> <p>{keyRatios[2].Price} | {keyRatios[2].Change}%</p></div>
@@ -81,7 +82,7 @@ return(<div>
     <div className="infoBlock">
       <div className="KeyRatioLegend">
         <div className="KeyRleg" id="ROE"  onClick={(id) => selectRow("ROE",id)} > ROE </div>
-        <div className="KeyR" name = "ROE">  {keyRatios[0].ROE} </div> 
+        <div className="KeyR" name = "ROE"> {keyRatios[0].ROE} </div> 
         <div className="KeyR" name = "ROE"> {keyRatios[1].ROE} </div> 
         <div className="KeyR" name = "ROE"> {keyRatios[2].ROE} </div> 
       </div>
@@ -96,7 +97,7 @@ return(<div>
 
     <div className="KeyBlock">
       <div className="VerticalLegend">
-        <div className="sideLegend">Debt
+        <div className="sideLegend"><p>Debt</p>
         </div>
     </div>
     <div className="infoBlock">

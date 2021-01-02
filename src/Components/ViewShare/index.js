@@ -2,14 +2,25 @@ import React,{useState} from "react";
 import "./style.css";
 
 
-
+  
 
 const ViewShare = (props) => {
 const [price] = useState(props.price);
 const [change] = useState(props.change);
 
 const ShowMore = (e) => {
-  const moreinfo = document.querySelector("#M"+e.target.id);
+
+  let id = e.target.id;
+  if(id.includes("."))
+  {
+    var str = id.split(".")
+    id = str[0]+'\\.'+str[1];
+  }
+
+
+
+  console.log(id)
+  const moreinfo = document.querySelector("#M"+id);
   moreinfo.classList.toggle("on")
 
 }

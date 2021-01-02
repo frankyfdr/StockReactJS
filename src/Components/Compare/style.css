@@ -1,128 +1,99 @@
 :root {
   --border: 0.01rem solid rgba(10, 14, 228, 0.664);
-  --bg: rgb(248, 247, 247);
+  --bg: #f8f7f7;
   --bgBits: rgba(173, 173, 179, 0.212);
-  --letraCor: black;
+  --letraCor: #fffbfb;
 }
-body {
-}
-
 .table {
-  margin-left: 7%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
   color: var(--letraCor);
-  position: absolute;
   display: block;
-  width: 85%;
+  width: 100rem;
   height: auto;
   padding: 5px;
-  -webkit-box-shadow: 5px 5px 27px 6px rgba(23, 24, 255, 0.49);
-  box-shadow: 5px 5px 27px 6px rgba(23, 24, 255, 0.49);
-  background-color: rgba(228, 75, 15, 0.582);
 }
-.VerticalLegend {
-  text-orientation: sideways;
-  writing-mode: vertical-rl;
-  height: auto;
+.info,
+.KeyR,
+.KeyRleg,
+.selectedRow,
+.selectedRowLeg {
+  height: 20px;
   text-align: center;
-  vertical-align: middle;
-  padding: 6px;
-}
-.sideLegend {
-  text-align: center;
-  vertical-align: middle;
-}
-.Col {
   width: 100%;
-  border: var(--border);
+  margin: 3px;
+  font-size: 0.8em;
 }
-p {
-  margin: 0px;
-}
-.TopInfo {
+.TopInfo,
+.back {
   display: inline-flex;
-  width: 100%;
   height: 50px;
   text-align: center;
-  -webkit-box-shadow: -1px 1px 13px 4px rgba(0, 0, 0, 0.35);
-  box-shadow: -1px 1px 13px 4px rgba(0, 0, 0, 0.35);
-  padding-bottom: 5px;
-  background-color: var(--bg);
+  background-color: #262626;
 }
-.stockName {
+
+.stockName,
+.TopInfo,
+.back {
+  height: 50px;
+  text-align: center;
+  background-color: #4b4848;
+}
+.stockName,
+.TopInfo {
   width: 100%;
-  background-color: var(--bgBits);
   padding-bottom: 5px;
-  margin-right: 3px;
-  margin-top: 3px;
-  color: var(--letraCor);
+}
+.VerticalLegend {
+  -webkit-text-orientation: sideways;
+  text-orientation: sideways;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  height: auto;
+  padding: 6px;
+}
+.sideLegend,
+.VerticalLegend {
+  text-align: center;
+  vertical-align: middle;
+}
+.infoBlock {
+  width: 100%;
+  display: block;
 }
 .KeyRatioLegend {
   margin: 3px;
   width: 100%;
   display: inline-flex;
 }
-.infoBlock {
-  width: 100%;
-  display: block;
-}
-
-.KeyR {
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  background-color: var(--bgBits);
-}
-
-.side {
-  height: 100%;
-  width: 100%;
-  display: block;
-  position: relative;
-}
-.KeyBlock {
-  display: inline-flex;
-  height: auto;
-  width: 100%;
-  background-color: var(--bg);
-  color: var(--letraCor);
-  -webkit-box-shadow: -1px 1px 13px 4px rgba(0, 0, 0, 0.35);
-  box-shadow: -1px 1px 13px 4px rgba(0, 0, 0, 0.35);
-}
 .info,
-.selectedRow,
 .KeyR,
 .KeyRleg,
+.selectedRow,
 .selectedRowLeg {
   height: 20px;
   text-align: center;
   width: 100%;
   margin: 3px;
+  font-size: 0.8em;
 }
-.KeyRleg {
-  width: 40%;
-}
-.selectedRow,
-.selectedRowLeg {
-  background-color: rgb(255, 255, 255);
-  -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.53);
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.53);
-  color: black;
-}
-.selectedRowLeg {
-  width: 40%;
-}
-.blockRatiosValue {
+.KeyR {
   width: 100%;
-  height: 115px;
-}
-.back {
-  width: 640px;
-  background-color: rgba(248, 248, 248, 0.952);
-  font-size: 20px;
-  align-items: center;
+  text-align: center;
   vertical-align: middle;
-  position: relative;
-  padding-top: 10px;
-  color: orangered;
+  background-color: #262626;
+}
+.KeyBlock {
+  display: inline-flex;
+  height: auto;
+  width: 100%;
+  background-color: rgba(47, 44, 44, 0.952);
+  color: #fffbfb;
+  color: var(--letraCor);
+}
+
+.side {
+  background-color: #262626;
 }

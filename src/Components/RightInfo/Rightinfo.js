@@ -10,7 +10,7 @@ const Rightinfo = (props) =>
 const [display, setDisplay] = useState("none");
 const handleSettingsClick = (e) => 
 {
-  const moreinfo = document.querySelector("#sideSet");
+  const moreinfo = document.querySelector(".settingsContainer");
   moreinfo.classList.toggle("on")
 
 
