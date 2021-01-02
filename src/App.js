@@ -11,7 +11,7 @@ import { GetLogo } from "./Components/API/GetLogo";
 import { BrowserRouter } from "react-router-dom";
 import Login from "./Components/LoginForm/Login.js"
 import Rightinfo from "./Components/RightInfo/Rightinfo.js";
-
+import "./script.js"
 const App = () => {
   const [rendimento, setRendimento] = useState(0);
 
@@ -22,7 +22,7 @@ const App = () => {
   const [username, setUsername] = useState([]);
   const [emailUser, setEmailUser] = useState([]);
   const [symUser, setSymUser] = useState("NFLX,AMZN,AAPL,GOOGL,KO,MCD,ADS.DE,MSFT,TSLA,SNE");
-  //const [symUser, setSymUser] = useState("NFLX");
+ // const [symUser, setSymUser] = useState("NFLX,MA");
   const [refresh,setRefresh] = useState();
   useEffect(() => {
 

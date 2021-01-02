@@ -8,24 +8,27 @@ const ViewShare = (props) => {
 const [price] = useState(props.price);
 const [change] = useState(props.change);
 
-const clickedHandle = (id) => {
-
-  var NameStyle = document.getElementById(id).style.width = "100%";
+const ShowMore = (e) => {
+  const moreinfo = document.querySelector("#M"+e.target.id);
+  moreinfo.classList.toggle("on")
 
 }
 
   return (
-    <div  className={props.type} >
-  
-      <div id={props.sym} className="NameBox" >
-        <label className="symName">{props.sym}</label>
+    <div className="stock-container"  style={{margin: '1%'}}>
+    <div id={props.sym} className={props.type} >
+      <div id={props.sym} className="NameBox" onClick={ShowMore} >
+        <label id={props.sym} className="symName">{props.sym}</label>
       </div>
       <div className="infoText">
         <label className="txtPrice"> {price} </label>
         <label className={props.color}>{props.change} ({props.percent}%) </label><br/>
-     
       </div>
+      
     </div>
+    <div id={"M"+props.sym} className="moreinfo"></div>
+    </div>
+    
   );
 };
 export default ViewShare;

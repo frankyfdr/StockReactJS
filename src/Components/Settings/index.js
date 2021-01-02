@@ -45,7 +45,7 @@ const Settings = (props) => {
 
   return (
     
-    <div id="sideSet" style={{ display: props.display}}>
+    <div id="sideSet" className="sideSet" >
       <button
         className="CollapseBtn"
         data-toggle="collapse"

@@ -10,11 +10,9 @@ const Rightinfo = (props) =>
 const [display, setDisplay] = useState("none");
 const handleSettingsClick = (e) => 
 {
-  if(display === "none"){
-    setDisplay("block");
-  }
-  else
-  setDisplay("none");
+  const moreinfo = document.querySelector("#sideSet");
+  moreinfo.classList.toggle("on")
+
 
   e.preventDefault();
 }

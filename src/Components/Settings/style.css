@@ -1,4 +1,4 @@
-#sideSet {
+.sideSet {
   position: absolute;
   width: 100%;
   max-width: 370px;
@@ -6,11 +6,15 @@
   margin: 1%, 1%, 1%, 2%;
   right: 5px;
   background-color: rgba(0, 0, 0, 0.801);
-  display: none;
   color: #fff;
   padding-top: 20px;
   border-radius: 10px;
   z-index: 3;
+}
+.siteSet on {
+  width: 0%;
+  transform: translate(1px, 0px);
+  display: none;
 }
 a,
 a:hover {
