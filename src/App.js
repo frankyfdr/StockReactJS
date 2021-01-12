@@ -11,7 +11,7 @@ import { GetLogo } from "./Components/API/GetLogo";
 import { BrowserRouter } from "react-router-dom";
 import Login from "./Components/LoginForm/Login.js"
 import Rightinfo from "./Components/RightInfo/Rightinfo.js";
-import "./script.js"
+import Stock from "./Components/Stock/index.js"
 const App = () => {
   const [rendimento, setRendimento] = useState(0);
 
@@ -48,7 +48,7 @@ const App = () => {
     <div>
       <Login refresh={refresh} nodejs={nodejs} setName={setNameUser} setEmail={setEmailUser} setSymUser={setSymUser} setUsername={setUsername} />
       <Header />
-     
+     <Stock />
       <BrowserRouter>
       <Search
         refresh={refresh}

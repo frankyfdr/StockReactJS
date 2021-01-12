@@ -7,9 +7,9 @@ import "./style.css";
 const ViewShare = (props) => {
 const [price] = useState(props.price);
 const [change] = useState(props.change);
-
 const ShowMore = (e) => {
 
+  
   let id = e.target.id;
   if(id.includes("."))
   {
