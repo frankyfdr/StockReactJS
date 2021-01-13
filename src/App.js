@@ -26,8 +26,8 @@ const App = () => {
   const [refresh,setRefresh] = useState();
   useEffect(() => {
 
-   //setRefresh(setInterval(() => load(refresh), 2000));
-   load();  
+   setRefresh(setInterval(() => load(refresh), 2000));
+   //load();  
       
   }, [symUser]);
 

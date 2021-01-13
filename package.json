@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn build & scp -i ~/Documents/ocean -r /home/fdr/Projects/stocks/build/*  root@178.62.43.97:/var/www/html"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -4,7 +4,7 @@
 }
 header#main-header {
   width: 100%;
-  height: 30px;
+  height: auto;
   margin-top: 0vh;
   background-color: black;
   color: #fff;
@@ -13,6 +13,8 @@ header#main-header {
   justify-content: center;
   align-items: center;
   border-radius: 0px 0px 200px 200px;
+  box-shadow: inset 0px 0px 10px rgb(118, 187, 211);
+  padding: 0px;
 }
 .headerContain {
   width: 100%;
@@ -32,18 +34,15 @@ header#main-header {
   height: 20px;
   right: 1%;
 }
-#logo,
-svg {
+#logo {
   height: 40px;
-}
-g {
-  width: 10px;
 }
 #logotxt {
   font-family: "kerox";
   font-size: 30px;
   margin-top: 9px;
   margin-left: 10px;
+  letter-spacing: 10px;
 
   background: linear-gradient(
     90deg,

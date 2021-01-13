@@ -8,11 +8,10 @@
 }
 #inputT,
 #searchBtn {
-  float: left;
-  border-radius: 10px 0px 0px 10px;
-  width: 70%;
+  padding: 5px;
+  border-radius: 10px;
+  width: 100%;
   height: 30px;
-  padding-left: 0.9em;
   border: 1px rgb(204, 186, 186) solid;
   background-color: rgba(190, 190, 190, 0.747);
   color: rgb(107, 107, 107);
@@ -23,12 +22,14 @@
   align-items: center;
   justify-content: center;
 }
-form {
+#formSearch {
   padding-top: 10px;
   vertical-align: middle;
-  display: inline-flex;
-  width: 540px;
+  display: flex;
+  width: 40%;
   height: 45px;
+  justify-content: center;
+  min-width: 450px;
 }
 #settings {
   position: absolute;
@@ -56,10 +57,43 @@ select {
 #searchBtn {
   float: right;
   border-radius: 0px 10px 10px 00px;
-  width: 70px;
+  width: 20%;
   height: 30px;
 }
 
 #searchBtn:hover {
   border: 1px solid #da552f;
+}
+#serchDiv {
+  width: 70%;
+}
+#search-opt {
+  height: 130px;
+  background-color: rgba(0, 0, 0, 0.849);
+  border-radius: 10px;
+  display: none;
+  padding: 5px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.opt-stock {
+  width: 100%;
+  height: 25px;
+  color: white;
+  display: inline-flex;
+  z-index: 1;
+  position: relative;
+}
+.opt-stock:hover {
+  box-shadow: inset 0px 0px 10px rgb(118, 187, 211);
+}
+.opt-text[name="sym"] {
+  width: 20%;
+}
+.opt-text[name="name"] {
+  width: 90%;
+  text-align: left;
+  margin-left: 20px;
+  overflow: hidden;
 }
