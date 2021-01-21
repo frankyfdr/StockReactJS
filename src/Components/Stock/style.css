@@ -1,14 +1,21 @@
 .stock-view-container {
   position: fixed;
   height: 80vh;
-  width: 60vh;
+  width: 60%;
+  min-width: 300px;
+  max-width: 350px;
   margin-left: auto;
   margin-right: auto;
   background-color: black;
-  z-index: 1;
-  top: 10vh;
+  z-index: 2;
+  top: 9vh;
   border-radius: 10px;
+  left: 29%;
+  left: min(600px);
   display: none;
+}
+.stock-view-container.on {
+  display: block;
 }
 .stock-name-container {
   width: 100%;
@@ -16,18 +23,19 @@
   padding: 10px;
   display: grid;
 }
+
+.stk-btn-container,
 .stk-graf {
-  width: 100%;
-  height: 30%;
-  background-color: grey;
-}
-.stk-btn-container {
   width: 100%;
   height: 25px;
   display: inline-flex;
   align-items: center;
   margin-right: auto;
   margin-top: 6px;
+}
+.stk-graf {
+  height: 150px;
+  background-color: grey;
 }
 .stk-btn {
   position: relative;
@@ -45,6 +53,46 @@
 .stk-info-container {
   width: 96%;
   height: 45%;
-  background-color: grey;
   margin: 2%;
+}
+#blank {
+  width: 200vw;
+  height: 200vh;
+  position: fixed;
+  left: -35vw;
+  top: -20vh;
+  display: none;
+  background-color: rgba(255, 255, 255, 0.185);
+  z-index: 1;
+}
+.close[name="stockInfo"] {
+  width: 100%;
+  margin-left: 10px;
+  color: white;
+  margin-top: 10px;
+}
+.stk-price > * {
+  margin-left: 1em;
+}
+label[name="info"] {
+  color: rgb(143, 143, 143);
+  float: right;
+  width: 30%;
+}
+p[name="info"] {
+  width: 100%;
+}
+.stk-statics {
+  display: inline-block;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .stock-view-container {
+    left: 10%;
+  }
+}
+@media screen and (max-width: 812px) {
+  .stock-view-container {
+    left: 30%;
+  }
 }

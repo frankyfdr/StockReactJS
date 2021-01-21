@@ -24,11 +24,13 @@
   font-weight: 700;
   border-radius: 30px;
   width: 100%;
+
+  border: 0.1px solid rgb(109, 108, 108);
 }
 
 .titleWinners {
-  background-color: rgba(43, 180, 43, 0.562);
+  color: rgba(0, 128, 0, 0.596);
 }
 .titleLosers {
-  background-color: rgba(197, 54, 54, 0.541);
+  color: rgba(255, 0, 0, 0.644);
 }

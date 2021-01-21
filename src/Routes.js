@@ -19,7 +19,7 @@ const Routes = (props) => (
         {
           
             if(props.symInfo.length != 0)
-            return( <Show  symInfo={props.symInfo} />)
+            return( <Show stk={props.stk} setStk={props.setStk} symInfo={props.symInfo} />)
             else
             return (<Loading />)
             

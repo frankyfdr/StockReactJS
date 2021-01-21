@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import moment from "moment"
 
 export const GetSymInfo = (symList, nodejs) => 
 {
@@ -10,12 +11,21 @@ export const GetSymInfo = (symList, nodejs) =>
       {
         let name = item.displayName;
         if (name === undefined)  name = item.longName;      
-        let str = JSON.parse('{"name":"'+name+'","price":'+item.regularMarketPrice.toFixed(2)+
+        let str = '{"name":"'+name+
+        '","price":'+item.regularMarketPrice.toFixed(2)+
         ',"percent":"'+item.regularMarketChangePercent.toFixed(2)+
-        '","sym":"'+item.symbol+
-        '","change":"'+item.regularMarketChange.toFixed(2)
-        +'"}');
+        '","sym":"'+item.symbol+'","change":"'+item.regularMarketChange.toFixed(2)+
+        '","open":"'+item.regularMarketOpen+
+        '","prevClose":"'+item.regularMarketPreviousClose+
+        '","exchangeOpen":"'+item.triggerable+
+        '","eps":"'+item.epsCurrentYear+
+        '","sharesOutstanding":"'+item.sharesOutstanding+
+        '","marketCap":"'+item.marketCap+
+        '","earningsTimestamp":"'+moment(new Date(item.earningsTimestamp*1000)).format('ll')+
+        '"}';
+        str = JSON.parse(str)
         
+         console.log(str)
         return str;
       })
       return list;

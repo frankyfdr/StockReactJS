@@ -1,12 +1,25 @@
 import React,{useState} from "react";
 import "./style.css";
-
-
-  
+import Stock from "../Stock/index.js"  
 
 const ViewShare = (props) => {
 const [price] = useState(props.price);
 const [change] = useState(props.change);
+
+const stk = () =>
+{
+
+  
+  props.setStk(props.idx)
+  const stock = document.querySelector("#stock-view-container")
+   document.querySelector("#blank").style.display = "block"
+  if(stock != null)
+  {
+    stock.classList.toggle("on")
+    
+  }
+}
+
 const ShowMore = (e) => {
 
   
@@ -16,9 +29,6 @@ const ShowMore = (e) => {
     var str = id.split(".")
     id = str[0]+'\\.'+str[1];
   }
-
-
-
   console.log(id)
   const moreinfo = document.querySelector("#M"+id);
   moreinfo.classList.toggle("on")
@@ -26,9 +36,10 @@ const ShowMore = (e) => {
 }
 
   return (
-    <div className="stock-container"  style={{margin: '1%'}}>
+    <div className="stock-container"  onClick={stk} style={{margin: '1%'}} >
     <div id={props.sym} className={props.type} >
-      <div id={props.sym} className="NameBox" onClick={ShowMore} >
+    
+      <div id={props.sym} className="NameBox"  >
         <label id={props.sym} className="symName">{props.sym}</label>
       </div>
       <div className="infoText">

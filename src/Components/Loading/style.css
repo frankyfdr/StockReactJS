@@ -1,5 +1,8 @@
+.loadDiv {
+  max-height: 100% !important;
+}
 .loader {
-  border: 3px solid #da552f;
+  border: 3px solid #1c13a0;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -18,7 +21,7 @@
   animation: rotate2 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
 }
 #loader3 {
-  border: 3px solid #da552f;
+  border: 3px solid #1c13a0;
   width: 240px;
   height: 240px;
   position: relative;
@@ -54,11 +57,18 @@
   }
 }
 #text {
-  color: #da552f;
   font-family: Arial;
   font-size: 20px;
   position: relative;
   top: -857px;
+  background: linear-gradient(
+    90deg,
+    rgb(118, 187, 211) 35%,
+    rgba(105, 156, 171, 1) 59%,
+    rgba(252, 252, 252, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 center {
   position: relative;

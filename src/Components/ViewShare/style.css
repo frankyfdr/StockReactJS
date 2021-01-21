@@ -3,7 +3,7 @@
 .shareBox {
   display: inline-flex;
   width: 300px;
-  height: 20px;
+  height: 30px;
   border-radius: 20px;
   margin-left: 3%;
   --box-shadow: 10px 2px 19px 6px rgba(0, 0, 0, 0.534);
@@ -36,6 +36,8 @@
   text-align: center;
 }
 .infoText {
+  justify-content: center;
+  align-items: center;
   float: right;
   width: 250px;
   height: auto;
@@ -43,7 +45,7 @@
   font-size: 10px;
   font-weight: 700;
   color: #000;
-  display: flex-inline;
+  display: inline-flex;
 }
 .symName {
   margin-top: 4px;
@@ -51,13 +53,13 @@
   width: auto;
   color: #fff;
   overflow: hidden;
-  font-size: 10px;
+  font-size: 15px;
 }
 .txtPrice {
   font-weight: 700;
-  font-size: 13px;
+  font-size: 15px;
   margin-right: 10px;
-  color: #40ec03;
+  color: #f5f5f5c5;
 }
 .Cgreen,
 .Cred {

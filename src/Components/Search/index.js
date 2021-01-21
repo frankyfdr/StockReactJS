@@ -11,6 +11,8 @@ const [opt,setOpt] = useState("");
 
 
 const optclick = (sym) =>{
+
+   
     if(!props.symUser.includes(sym))
     {
         let newList = props.symUser+","+sym;
@@ -28,8 +30,14 @@ const optclick = (sym) =>{
 
 const viewOpt = (e) =>
 {
+   
+    if(document.getElementById("inputT").value === "")
+        document.getElementById("search-opt").style.display = "none"
+    else
+    {
     mySubmitHandler(e);
     document.getElementById("search-opt").style.display = "block";
+    }
     e.preventDefault();
 }
 const focusout = (e) =>

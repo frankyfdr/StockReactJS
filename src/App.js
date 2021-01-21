@@ -14,10 +14,10 @@ import Rightinfo from "./Components/RightInfo/Rightinfo.js";
 import Stock from "./Components/Stock/index.js"
 const App = () => {
   const [rendimento, setRendimento] = useState(0);
-
+  const [stkdetails, setstkdetails] = useState("");
   const [symInfo, setSymInfo] = useState([]);
   //const [nodejs] = useState("http://localhost:3001");
-  const [nodejs] = useState("https://api.frankyfdr.tk");
+  const [nodejs] = useState("https://api.stockey.tk");
   const [nameUser, setNameUser] = useState("default");
   const [username, setUsername] = useState([]);
   const [emailUser, setEmailUser] = useState([]);
@@ -46,9 +46,12 @@ const App = () => {
 
   return (
     <div>
+      
+      <div>
+      </div>
       <Login refresh={refresh} nodejs={nodejs} setName={setNameUser} setEmail={setEmailUser} setSymUser={setSymUser} setUsername={setUsername} />
       <Header />
-     <Stock />
+      <Stock symInfo={symInfo} stk={stkdetails} setStk={setstkdetails}/>
       <BrowserRouter>
       <Search
         refresh={refresh}
@@ -65,7 +68,7 @@ const App = () => {
         <Rightinfo setSymList={setSymUser}
           rendimento={rendimento}
           list={symInfo} name={nameUser} />
-        <Routes symInfo={symInfo} nodejs={nodejs} list={symUser} />
+        <Routes symInfo={symInfo} stk={stkdetails} setStk={setstkdetails}  nodejs={nodejs} list={symUser} />
       </BrowserRouter>
 
 

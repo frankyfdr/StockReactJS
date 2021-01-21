@@ -6,6 +6,9 @@
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #fafafa;
+  background: #181818;
   color: #333;
+}
+html {
+  overflow-x: hidden;
 }
