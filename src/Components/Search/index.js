@@ -76,9 +76,14 @@ const updateSymList = (props,newList) =>
     })
 
 }
-
+const menuShow =() =>
+{
+    const menu = document.querySelector(".menu-container")
+    menu.classList.toggle("show")
+  
+}
 return ( 
-    <div>
+    <div >
 <div className="searchBox">
     <form id="formSearch" autoComplete="off" >
         <div id="serchDiv">
@@ -88,7 +93,11 @@ return (
         
     </form>
 </div>
-
+    <div className="HamMenu" onClick={menuShow}>
+        <div className="optHamMenu"></div>
+        <div className="optHamMenu"></div>
+        <div className="optHamMenu"></div>
+    </div>
 </div>
 )
 }

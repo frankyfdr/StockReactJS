@@ -3,15 +3,14 @@
   height: 80vh;
   width: 60%;
   min-width: 300px;
-  max-width: 350px;
+  max-width: 450px;
   margin-left: auto;
   margin-right: auto;
   background-color: black;
   z-index: 2;
   top: 9vh;
   border-radius: 10px;
-  left: 29%;
-  left: min(600px);
+  left: 35vw;
   display: none;
 }
 .stock-view-container.on {
@@ -88,11 +87,16 @@ p[name="info"] {
 }
 @media screen and (max-width: 768px) {
   .stock-view-container {
-    left: 10%;
+    left: 18%;
+  }
+}
+@media screen and (max-width: 426px) {
+  .stock-view-container {
+    left: 0%;
+    width: 95%;
   }
 }
 @media screen and (max-width: 812px) {
   .stock-view-container {
-    left: 30%;
   }
 }

@@ -9,6 +9,10 @@ export const GetSymInfo = (symList, nodejs) =>
       data = data.data.quoteResponse.result;
       var list =  data.map((item) => 
       {
+        let earnDate = "N/A";
+        if(item.earningsTimestamp !== undefined)
+        earnDate = moment(new Date(item.earningsTimestamp*1000)).format('ll')
+
         let name = item.displayName;
         if (name === undefined)  name = item.longName;      
         let str = '{"name":"'+name+
@@ -21,11 +25,11 @@ export const GetSymInfo = (symList, nodejs) =>
         '","eps":"'+item.epsCurrentYear+
         '","sharesOutstanding":"'+item.sharesOutstanding+
         '","marketCap":"'+item.marketCap+
-        '","earningsTimestamp":"'+moment(new Date(item.earningsTimestamp*1000)).format('ll')+
+        '","earningsTimestamp":"'+earnDate+
         '"}';
         str = JSON.parse(str)
         
-         console.log(str)
+     
         return str;
       })
       return list;

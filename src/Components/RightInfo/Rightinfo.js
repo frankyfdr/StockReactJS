@@ -37,7 +37,7 @@ const handleSettingsClick = (e) =>
     src={settingsIco}
     />
     <div className="settingsContainer">
-      <Settings list={props.list} display= {display}/>
+      {/*}<Settings list={props.list} display= {display}/> {*/}
     </div>
   
 

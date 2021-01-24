@@ -29,7 +29,7 @@
   width: 40%;
   height: 45px;
   justify-content: center;
-  min-width: 450px;
+  min-width: 260px;
 }
 #settings {
   position: absolute;
@@ -96,4 +96,22 @@ select {
   text-align: left;
   margin-left: 20px;
   overflow: hidden;
+}
+.HamMenu {
+  position: absolute;
+  width: auto;
+  height: auto;
+  right: 0;
+  margin-top: -39px;
+  margin-right: 80px;
+  cursor: pointer;
+}
+.optHamMenu {
+  width: 60px;
+  height: 5px;
+  background-color: rgb(255, 255, 255);
+  margin: 5px;
+}
+.HamMenu:hover .optHamMenu {
+  background-color: rgb(116, 204, 211);
 }

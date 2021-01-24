@@ -60,15 +60,10 @@ const Stock = (props) => {
 
     return(
         <div>
+            <div id="blank" >
             <div id="stock-view-container" className="stock-view-container">
-                
-                    {div}
-
-          
-
-                
+                {div}
             </div>
-              <div id="blank" >
             </div>
         </div>
     )

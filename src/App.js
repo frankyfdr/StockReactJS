@@ -4,10 +4,9 @@ import Routes from "./Routes";
 import "./style.css";
 import Header from "./Components/Header";
 import Search from "./Components/Search/index.js";
-import Show from "./Components/Show/Show.js";
+import Menu from "./Components/Menu";
 import { GetSymInfo } from "./Components/API/GetSym";
-import Settings from "./Components/Settings";
-import { GetLogo } from "./Components/API/GetLogo";
+
 import { BrowserRouter } from "react-router-dom";
 import Login from "./Components/LoginForm/Login.js"
 import Rightinfo from "./Components/RightInfo/Rightinfo.js";
@@ -26,8 +25,8 @@ const App = () => {
   const [refresh,setRefresh] = useState();
   useEffect(() => {
 
-   setRefresh(setInterval(() => load(refresh), 2000));
-   //load();  
+  // setRefresh(setInterval(() => load(refresh), 2000));
+   load();  
       
   }, [symUser]);
 
@@ -49,6 +48,7 @@ const App = () => {
       
       <div>
       </div>
+      <Menu nameUser={nameUser} symInfo={symInfo} />
       <Login refresh={refresh} nodejs={nodejs} setName={setNameUser} setEmail={setEmailUser} setSymUser={setSymUser} setUsername={setUsername} />
       <Header />
       <Stock symInfo={symInfo} stk={stkdetails} setStk={setstkdetails}/>
