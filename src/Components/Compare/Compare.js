@@ -1,165 +1,97 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./style.css"
 import {Link} from "react-router-dom";
-
-
-
+import { Context } from "../API/Context.js";
 
 const App = (props) =>
 {
+const ctx = useContext(Context)
+const [search,setSearch] = useState();
+const [opt,setOpt] = useState();
+const card = ()=>
+{
+  if(ctx[0].symInfo.length!= 0)
+  return( <div className="stock-card-container">
+          <div className ="card-name"><label>{ctx[0].symInfo[0].name}</label></div>
+          <div className="card-section">
+            <label className="ratio-label">{ctx[0].symInfo[0].eps}</label>
+          </div>
+          <div className="card-section"></div>
+          </div>)
+}
 
-  const [keyRatios, setKeyRatios] = useState([0,0,0]);
+const change = (e) =>{
+  if(e.target.value!= "")
+  {
+    document.getElementById("new-card-opt").style.display ="block"
+    axios.get(ctx[6]+"/lookup/"+e.target.value).then((response) =>{
+      response = response.data.finance.result[0].documents
+      let opt = response.map((item) =>{
+          return(
+              
+                <label style={{color:"white",height:"40px",width:"100%"}} >{item.symbol}</label>
+             
+          )
+      })
+      setOpt(opt)
+      console.log(opt)
+  })
+  }
+}
+
+const searchCard = () =>{
+    setSearch(
+    <div className="new-container">
+      <input placeholder="search.." onChange={change} id="new-in" className="new-input" type="text"/>
+      <div id="new-card-opt" className="new-card-opt">{opt}</div>
+    </div>)
+}
+
+const newCard = ()=>
+{
+  return( 
+        <div onClick={searchCard} onBlur={()=>{/*
+          document.getElementById("new-in").value ="";setSearch("")
+          document.getElementById("new-card-opt").style.display ="none"
+          setOpt("")*/
+          }} className="card-search">
+          <label >+</label>
+          {search}
+        </div>)
+}
+
+
   
- 
-  async function getKeyRatios ()  {
-    console.log(props);
-    var sym = props.sym.sym.split(',');
-    const share1 = axios.get( props.nodejs+"/key/"+sym[0]);
-    const share2 = axios.get(props.nodejs+"/key/"+sym[1]);
-    const share3 = axios.get(props.nodejs+"/key/"+sym[2]);
-    let result = await axios.all([share1,share2,share3]).then(axios.spread((...data) =>
-    {
-      return [data[0].data,data[1].data,data[2].data];
-     
-    })).catch(errors => {
-      console.log(errors);
-    })
-    setKeyRatios(result);
-  }
 
-  useEffect(()=>{
-    //getKeyRatios();
-  },[])
- 
-
-  const selectRow = (name,event) =>
-  {
-    let id = event.target.id;
-  let newClass = "selectedRow";
-  if(document.getElementById(id).className  === "KeyRleg")
-   document.getElementById(id).className = "selectedRowLeg";
-  else
-  { 
-    newClass = "KeyR";
-    document.getElementById(id).className = "KeyRleg";
-  }
-  var cl = document.getElementsByName(name);
-  for(var i = 0; i < cl.length; i++)
-  {
-    cl[i].className = newClass;
-  }
-  }
-return(
-<div >
-<div className="table">
-
-
-<div className="TopInfo">
-<div className="back"> <Link to="/" >Back</Link></div>
-<div className="stockName"><p>{keyRatios[0].Name}</p> <p>{keyRatios[0].Price} | {keyRatios[0].Change}%</p></div>
-      <div className="stockName"><p>{keyRatios[1].Name}</p> <p>{keyRatios[1].Price} | {keyRatios[1].Change}%</p></div>
-    <div className="stockName"><p>{keyRatios[2].Name}</p> <p>{keyRatios[2].Price} | {keyRatios[2].Change}%</p></div>
-    </div>
-
-
-<div className="side">
-    <div className="KeyBlock">
-      <div className="VerticalLegend">
-        <div className="sideLegend">All Rounders
+ return(
+    <div className="table-container">
+      {/* --------------------------key section -------------------*/}
+      <div className="key-container">
+        <div name="profitable" className="key-section">
+          <label className="key-label">Profitable</label>
+          <div className="ratio-label-container">
+          <label className="ratio-label">EPS</label>
+          <label className="ratio-label">ROI</label>
+          <label className="ratio-label">PL</label>
+          </div>
         </div>
-    </div>
- 
-    </div>
-
-
-    <div className="KeyBlock">
-      <div className="VerticalLegend">
-        <div className="sideLegend">Profitable
+        <div className="key-section">
+          <label className="key-label">Dept</label>
+          <div className="ratio-label-container">
+          <label className="ratio-label">EPS</label>
+          <label className="ratio-label">ROI</label>
+          <label className="ratio-label">PL</label>
+          </div>
         </div>
-    </div>
-    <div className="infoBlock">
-      <div className="KeyRatioLegend">
-        <div className="KeyRleg" id="ROE"  onClick={(id) => selectRow("ROE",id)} > ROE </div>
-        <div className="KeyR" name = "ROE"> {keyRatios[0].ROE} </div> 
-        <div className="KeyR" name = "ROE"> {keyRatios[1].ROE} </div> 
-        <div className="KeyR" name = "ROE"> {keyRatios[2].ROE} </div> 
+        
       </div>
-      <div className="KeyRatioLegend">
-      <div className="KeyRleg" id="EPS"  onClick={(id) => selectRow("EPS",id)}> EPS </div> 
-      <div className="KeyR" id="EPS" name="EPS"  onClick={(id) => selectRow("EPS",id)}> {keyRatios[0].EPS}</div>
-      <div className="KeyR" id="EPS"  name ="EPS" onClick={(id) => selectRow("EPS",id)}> {keyRatios[1].EPS}</div> 
-      <div className="KeyR" id="EPS"  name ="EPS" onClick={(id) => selectRow("EPS",id)}> {keyRatios[2].EPS}</div>  
+      {/* --------------------------end key section -------------------*/}
+      {card() }
+      {newCard()}
+      
     </div>
-    </div>
-    </div>
-
-    <div className="KeyBlock">
-      <div className="VerticalLegend">
-        <div className="sideLegend"><p>Debt</p>
-        </div>
-    </div>
-    <div className="infoBlock">
-      <div className="KeyRatioLegend">
-        <div className="KeyRleg" id="WCapital"  onClick={(id) => selectRow("Wcapital",id)}> Working Capital </div> 
-        <div className="KeyR"  name="Wcapital" > {keyRatios[0].WorkingCapital}</div>  
-        <div className="KeyR"  name="Wcapital" > {keyRatios[1].WorkingCapital}</div>  
-        <div className="KeyR" name="Wcapital" > {keyRatios[2].WorkingCapital}</div>      
-
-        </div>
-        <div className="KeyRatioLegend">
-    
-    <div className="KeyRleg" id="QR"  onClick={(id) => selectRow("QR",id)}> Quick Ratio </div> 
-    <div className="KeyR"  name="QR" > {keyRatios[0].QuickRatio}</div>  
-    <div className="KeyR"  name="QR" > {keyRatios[1].QuickRatio}</div>  
-    <div className="KeyR" name="QR" > {keyRatios[2].QuickRatio}</div>      
-    </div>
-
-    <div className="KeyRatioLegend">
-    
-    <div className="KeyRleg" id="dte"  onClick={(id) => selectRow("dte",id)}> Debt to Equity </div> 
-    <div className="KeyR"  name="dte" > {keyRatios[0].Debt_Equity}</div>  
-    <div className="KeyR"  name="dte" > {keyRatios[1].Debt_Equity}</div>  
-    <div className="KeyR" name="dte" > {keyRatios[2].Debt_Equity}</div>      
-    </div>
-
-    </div>
-
-    </div>
-
-    <div className="KeyBlock">
-      <div className="VerticalLegend">
-        <div className="sideLegend">Growth</div>
-    </div>
-    <div className="KeyRatioLegend">
-    <div className="KeyRleg" id="dte"  onClick={(id) => selectRow("dte",id)}> Grow ratio 1 </div> 
-      <div className="KeyR"> P/L </div>
-      <div className="KeyR"> P/L </div> 
-      <div className="KeyR"> P/L </div> 
-       
-    </div>
-    </div>
-
-    <div className="KeyBlock">
-      <div className="VerticalLegend">
-        <div className="sideLegend">Governance
-        </div>
-    </div>
-    <div className="KeyRatioLegend">
-    <div className="KeyRleg" id="dte"  onClick={(id) => selectRow("dte",id)}> Gov ratio 1 </div> 
-      <div className="KeyR"> P/L  </div>
-      <div className="KeyR"> P/L </div> 
-      <div className="KeyR"> P/L </div> 
-       
-    </div>
-    </div>
-</div>
-    </div>  
-  </div>
-
-  
-
 )}
 
 export default App;

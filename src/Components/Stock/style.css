@@ -34,7 +34,7 @@
 }
 .stk-graf {
   height: 150px;
-  background-color: grey;
+  background-color: rgba(39, 39, 39, 0.294);
 }
 .stk-btn {
   position: relative;
@@ -93,7 +93,8 @@ p[name="info"] {
 @media screen and (max-width: 426px) {
   .stock-view-container {
     left: 0%;
-    width: 95%;
+    width: 93vw;
+    margin: 0px 3.5vw;
   }
 }
 @media screen and (max-width: 812px) {

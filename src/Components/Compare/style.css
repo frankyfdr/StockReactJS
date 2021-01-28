@@ -1,99 +1,108 @@
 :root {
-  --border: 0.01rem solid rgba(10, 14, 228, 0.664);
-  --bg: #f8f7f7;
-  --bgBits: rgba(173, 173, 179, 0.212);
-  --letraCor: #fffbfb;
+  --herderSize:5em;
+  --sectionSize: 7em;
+  --cardSize:20%;
+  --bgContainer: #001B34;
+  --radius:5px;
+  --margin:0.2em 0.1em;
 }
-.table {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  color: var(--letraCor);
-  display: block;
-  width: 100rem;
-  height: auto;
-  padding: 5px;
-}
-.info,
-.KeyR,
-.KeyRleg,
-.selectedRow,
-.selectedRowLeg {
-  height: 20px;
-  text-align: center;
-  width: 100%;
-  margin: 3px;
-  font-size: 0.8em;
-}
-.TopInfo,
-.back {
-  display: inline-flex;
-  height: 50px;
-  text-align: center;
-  background-color: #262626;
+.table-container{
+  position: absolute;
+  width: 90%;
+  height: 50%;
+  background-color:#38343494;
+  margin: 5%;
+  display:flex;
 }
 
-.stockName,
-.TopInfo,
-.back {
-  height: 50px;
-  text-align: center;
-  background-color: #4b4848;
-}
-.stockName,
-.TopInfo {
+.table-Header{
+  height: 20%;
   width: 100%;
-  padding-bottom: 5px;
+  border:1px solid pink
 }
-.VerticalLegend {
-  -webkit-text-orientation: sideways;
+.key-container{
+  margin-top:  var(--herderSize) !important;
+  height: 78%;
+  width: 15%;
+  bottom:0;
+  margin:var(--margin);
+}
+.key-section{
+  width: 100%;
+  height: var(--sectionSize);
+  background-color: var(--bgContainer);
+  border-radius: var(--radius);
+  display: inline-flex;
+}
+.key-section[name="profitable"]
+{
+  margin-top: 0.6em;
+}
+.ratio-label-container{
+  width: 100%;
+}
+.key-label{
   text-orientation: sideways;
-  -webkit-writing-mode: vertical-rl;
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
-  height: auto;
-  padding: 6px;
-}
-.sideLegend,
-.VerticalLegend {
+  writing-mode:vertical-lr;
+  transform: rotate(180deg);
+  font-size:15px;
   text-align: center;
-  vertical-align: middle;
+  height:100%;
+  
 }
-.infoBlock {
-  width: 100%;
-  display: block;
-}
-.KeyRatioLegend {
-  margin: 3px;
-  width: 100%;
-  display: inline-flex;
-}
-.info,
-.KeyR,
-.KeyRleg,
-.selectedRow,
-.selectedRowLeg {
-  height: 20px;
-  text-align: center;
-  width: 100%;
-  margin: 3px;
-  font-size: 0.8em;
-}
-.KeyR {
+.ratio-label{
+  position: relative;
   width: 100%;
   text-align: center;
-  vertical-align: middle;
-  background-color: #262626;
+  margin:0px;
 }
-.KeyBlock {
-  display: inline-flex;
-  height: auto;
-  width: 100%;
-  background-color: rgba(47, 44, 44, 0.952);
-  color: #fffbfb;
-  color: var(--letraCor);
+label{
+  margin:0px;
 }
-
-.side {
-  background-color: #262626;
+.stock-card-container{
+  height: 100%;
+  width: var(--cardSize);
+  margin:var(--margin);
+}
+.card-name{
+  height: var(--herderSize);
+  border-radius: 5px;
+  background-color: var(--bgContainer);
+  margin:var(--margin);
+  text-align: center;
+}
+.card-section{
+  height: var(--sectionSize);
+  background-color: var(--bgContainer);
+  border-radius: var(--radius);
+  margin:var(--margin);
+}
+.card-search{
+  height: 100%;
+  width: var(--cardSize);
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  border: 1px solid var(--bgContainer);
+  border-radius: var(--radius);
+  margin:var(--margin);
+}
+.new-container{
+  width: 90%;
+}
+.new-input{
+  position: relative;
+  width: 90%;
+  background-color: rgba(128, 128, 128, 0.459);
+  border:none;
+  border-radius: 7px;
+  padding:5px;
+  color: rgba(255, 255, 255, 0.486)
+}
+.new-card-opt{
+  width: 90%;
+  height: 104px;
+  border: 1px solid grey;
+  border-radius: 7px;
+  display: none;
 }

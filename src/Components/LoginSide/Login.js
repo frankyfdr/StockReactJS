@@ -75,7 +75,6 @@ const Login = (props) =>
           .then((data) => {
               if(data.data !== false && data.data !== 3)
               {
-                localStorage.setItem("tkn",data.data.tkn)
                 getUserInfo(data.data);
                 closeHandle(event);
                 setErro("");
@@ -103,11 +102,8 @@ const Login = (props) =>
       clearInterval(props.refresh);
     }
 
-    return(<div className="Contain" id="login">
-        <div className="effectMode"></div>
-    <div className="loginContain">
-        <div className="close" onClick={closeHandle}>x</div>
-        
+    return(
+   
     <form className="lform" onSubmit={loginHandler}>
     <label className="errorSignUp">{errorSignUp}</label>
         <label className="inputfield" >Username</label>
@@ -125,9 +121,7 @@ const Login = (props) =>
             onClick={signup}>Sign up</button>
         </div>
     </form>
-        
-    </div>
-</div>
+ 
 )}
 
 

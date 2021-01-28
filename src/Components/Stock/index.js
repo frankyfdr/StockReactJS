@@ -29,12 +29,12 @@ const Stock = (props) => {
                             {Sym.price} 
                         <label className="stk-change">
                          {Sym.change} ({Sym.percent})
-                         </label>
+                         </label>   
                     </label>
                     </div>
 
                     <div className="stk-graf"> 
-                   
+                    <label style={{width:"100%",textAlign: 'center'}}>Under Construction</label>
                     </div>
                     {/*}
                       <div className="stk-btn-container"> 
