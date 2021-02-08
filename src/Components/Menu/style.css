@@ -103,3 +103,23 @@ a,a:hover{
   color:white;
   
 }
+.signOut{
+  position: absolute;
+  bottom: 0;
+  height: 10%;
+  margin:auto;
+  width: 70%;
+ 
+}
+
+.signOutlb
+{
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.signOutlb:hover{
+  background-color: rgba(29, 126, 143, 0.39);
+}

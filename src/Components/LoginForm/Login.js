@@ -95,7 +95,6 @@ const Login = (props) =>
 
     const getUserInfo =(data) => 
     { 
-      console.log(data);
       props.setName(data.name);
       props.setEmail(data.email);
       props.setUsername(data.username);

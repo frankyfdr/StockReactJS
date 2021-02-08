@@ -9,7 +9,7 @@
 .table-container{
   position: absolute;
   width: 90%;
-  height: 50%;
+  height: auto;
   background-color:#38343494;
   margin: 5%;
   display:flex;
@@ -33,6 +33,7 @@
   background-color: var(--bgContainer);
   border-radius: var(--radius);
   display: inline-flex;
+  min-width: 100px;
 }
 .key-section[name="profitable"]
 {
@@ -40,21 +41,29 @@
 }
 .ratio-label-container{
   width: 100%;
+  text-align: center;
+  height: 100%;
+  display: grid;
+  align-items: center;
 }
 .key-label{
+
+  background-color: #00030652;
   text-orientation: sideways;
   writing-mode:vertical-lr;
   transform: rotate(180deg);
-  font-size:15px;
+  font-size:0.9rem;
   text-align: center;
   height:100%;
   
 }
 .ratio-label{
+  font-size:0.75em;
   position: relative;
   width: 100%;
   text-align: center;
-  margin:0px;
+  height: 10rem;
+  display: contents;
 }
 label{
   margin:0px;
@@ -76,6 +85,7 @@ label{
   background-color: var(--bgContainer);
   border-radius: var(--radius);
   margin:var(--margin);
+  text-align: center;
 }
 .card-search{
   height: 100%;
@@ -86,9 +96,25 @@ label{
   border: 1px solid var(--bgContainer);
   border-radius: var(--radius);
   margin:var(--margin);
+  min-width: 140px;
 }
 .new-container{
-  width: 90%;
+  width: 20%;
+  min-width: 140px;
+}
+.opt-label{
+  color: white;
+  width: 100%;
+  text-align: right;
+  margin: 10px;
+  font-size: 0.65rem;
+}
+.opt-label-container:hover{
+  background-color:var(--bgContainer);
+  border-radius: 10px;
+}
+.opt-label-container{
+  
 }
 .new-input{
   position: relative;
@@ -100,9 +126,16 @@ label{
   color: rgba(255, 255, 255, 0.486)
 }
 .new-card-opt{
-  width: 90%;
+  width: auto;
   height: 104px;
   border: 1px solid grey;
   border-radius: 7px;
   display: none;
+  position: absolute;
+}
+@media screen and (max-width:425px)
+{
+  .card-search{
+    margin-left: 58px;
+  }
 }

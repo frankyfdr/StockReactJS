@@ -78,6 +78,14 @@ const portfolio =() =>
  })           
 }
 
+const signout= ()=>{
+    localStorage.removeItem("tkn");
+    ctx[2].setNameUser("default")
+    ctx[3].setEmailUser("")
+    ctx[4].setUsername("")
+    
+}
+
     return(
         <div className="menu-container">
 
@@ -102,7 +110,10 @@ const portfolio =() =>
             <Link to="/Compare"> <button className="BtnMenu" onClick={menuShow} >
                      Compare</button></Link>
             </div>
+            { (ctx[2].nameUser!="default") ? <div className="signOut" ><label onClick={signout} className="signOutlb">Sign Out</label></div> : <div></div>
+            }
             </div>
+            
         </div>)
 }
 
