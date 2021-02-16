@@ -86,6 +86,8 @@ label{
   border-radius: var(--radius);
   margin:var(--margin);
   text-align: center;
+  display: grid;
+  align-items: center;
 }
 .card-search{
   height: 100%;
@@ -113,9 +115,7 @@ label{
   background-color:var(--bgContainer);
   border-radius: 10px;
 }
-.opt-label-container{
-  
-}
+
 .new-input{
   position: relative;
   width: 90%;
@@ -126,13 +126,28 @@ label{
   color: rgba(255, 255, 255, 0.486)
 }
 .new-card-opt{
-  width: auto;
+  width: 40%;
   height: 104px;
   border: 1px solid grey;
   border-radius: 7px;
   display: none;
+
   position: absolute;
 }
+.new-list-item{
+  height: 20px;
+}
+select{
+  background-color: rgba(196, 191, 191, 0.397);
+  color: white;
+  border-radius: 15px;
+}
+option{
+  background-color: rgb(176, 176, 184);
+  color:black;
+  border:none;
+}
+
 @media screen and (max-width:425px)
 {
   .card-search{

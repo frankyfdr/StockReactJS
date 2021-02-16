@@ -4,95 +4,96 @@ import axios from "axios";
 import "./style.css"
 import {Link} from "react-router-dom";
 import { Context } from "../API/Context.js";
-import e from "cors";
 
 const App = (props) =>
 {
+const [cardCount,setcardCount] = useState(0);
 const ctx = useContext(Context)
-const [search,setSearch] = useState();
+const [loaded,setLoaded] = useState(false);
 const [opt,setOpt] = useState();
-const [cards, setCards] = useState();
+const [cards, setCards] = useState("");
 
 
-const card = ()=>
+const card = async ()=>
 {
+  const drop = document.getElementById("drop");
+  var sym = drop.options[drop.selectedIndex].id;
+
+
+
   if(ctx[0].symInfo.length!= 0)
-
-   var x = axios.get(ctx[6]+"/key/axp").then((resp)=>{
+   var x = await axios.get(ctx[6]+"/key/"+sym).then((resp)=>{
+     console.log(resp.data)
+     
    resp = resp.data
-   console.log(resp)
- return( <div className="stock-card-container">
+   return( <div className="stock-card-container">
           <div className ="card-name"><label>{resp.Name}</label></div>
+          
+          {/*} ----------groowth Section------------{*/}
           <div className="card-section">
-          <label className="ratio-label">{resp.EPS}</label>
+            <div> <label className="ratio-label">{resp.EPS}</label></div>
+            <div> <label className="ratio-label">{resp.PEG}</label></div>
+            <div> <label className="ratio-label">{resp.trailingPE}</label></div>
+            <div> <label className="ratio-label">{resp.forwardPE}</label></div>
           </div>
-          <div className="card-section"></div>
-          </div>)
+          {/*} ----------Profit Section------------{*/}
+          <div className="card-section">
+            <div> <label className="ratio-label">{resp.ROE}</label></div>
+            <div> <label className="ratio-label">{resp.ROA}</label></div>
+            <div> <label className="ratio-label">{resp.ROIC}</label></div>
+            <div> <label className="ratio-label">{resp.ProfitMargin}</label></div>
+            <div> <label className="ratio-label">{resp.operatingMargins}</label></div>
+
+          </div>
+            {/*} ----------debpt Section------------{*/}
+            <div className="card-section">
+            <div> <label className="ratio-label">{resp.QuickRatio}</label></div>
+            <div> <label className="ratio-label">{resp.currentRatio}</label></div>
+            <div> <label className="ratio-label">{resp.debtToEquity}</label></div>
+          </div>
+          </div>) 
     })
-    setCards(x)
-    console.log(cards)
-   
-}
-
-const setNew = () =>{
-  alert()
-}
-
-const change = (e) =>{
-  if(e.target.value!= "")
-  {
+    setCards(card => [...card, x]);
+    setcardCount(cardCount+1)
     
-    document.getElementById("new-card-opt").style.display ="block"
-    axios.get(ctx[6]+"/lookup/"+e.target.value).then((response) =>{
-      response = response.data.finance.result[0].documents
-      let newCardSym = response.map((item) =>{
-          return(
-              
-                <label style={{color:"white",height:"40px",width:"100%"}} >{item.symbol}</label>
-             
-          )
-      })
-      setOpt(newCardSym)
-      console.log(opt)
-  })
-  }
+    if(cardCount == 3)
+    {
+    document.getElementById("cardSearch").style.display ="none";
+    }
+   
+  
 }
 
-const searchCard = () =>{
-    setSearch(
-    <div className="new-container">
-      <input placeholder="search.." onChange={change} id="new-in" className="new-input" type="text"/>
-      <div id="new-card-opt" className="new-card-opt">{opt}</div>
-    </div>)
-}
 
-const newCard = ()=>
-{
-  return( 
-        <div onClick={searchCard} onBlur={()=>{/*
-          document.getElementById("new-in").value ="";setSearch("")
-          document.getElementById("new-card-opt").style.display ="none"
-          setOpt("")*/
-          }} className="card-search">
-          <label >+</label>
-          {search}
-        </div>)
-}
+
 useEffect(() => {
   
-  card()
+
+if(!loaded)
+{
+let result = ctx[0].symInfo.map((item)=>{
+  setLoaded(true)
+  return(
+    <option id={item.sym}>{item.name}</option>
+  )
   
-  }, []);
+})
+setOpt(result)
+  
+}
+  
+  }, [ctx]);
  return(
     <div className="table-container">
       {/* --------------------------key section -------------------*/}
       <div className="key-container">
         <div name="profitable" className="key-section">
-          <label className="key-label">All Rounders</label>
+          <label className="key-label">Growth</label>
           <div className="ratio-label-container">
-          <div><label className="ratio-label">PL</label></div>
+          <div><label className="ratio-label">EPS</label></div>
           <div><label className="ratio-label">PEG Ratio</label></div>
-          <div><label className="ratio-label">P/VP</label></div>
+           <div><label className="ratio-label">Trailing PE</label></div>
+           <div><label className="ratio-label">Forward PE</label></div>
           </div>
         </div>
         <div className="key-section">
@@ -101,43 +102,30 @@ useEffect(() => {
           <div><label className="ratio-label">ROE</label></div>
           <div><label className="ratio-label">ROA</label></div>
           <div><label className="ratio-label">ROIC</label></div>
-          <div><label className="ratio-label">Gross Margin</label></div>
-          <div><label className="ratio-label">Net Profit Margin</label></div>
+          <div><label className="ratio-label">Profit Margin</label></div>
+          <div><label className="ratio-label">Operating Margin</label></div>
           </div>
         </div>
 
          <div className="key-section">
           <label className="key-label">Debt</label>
           <div className="ratio-label-container">
-          <div><label className="ratio-label">D/PL</label></div>
-          <div><label className="ratio-label">DL/EBITDA</label></div>
+          <div><label className="ratio-label">Quick Ratio</label></div>
           <div><label className="ratio-label">Current Ratio</label></div>
-          <div><label className="ratio-label">Gross Margin</label></div>
+          <div><label className="ratio-label">debtToEquity</label></div>
           </div>
         </div>
         
-        <div className="key-section">
-          <label className="key-label">Growth</label>
-          <div className="ratio-label-container">
-          <div><label className="ratio-label">Ebitda CARGR</label></div>
-          <div><label className="ratio-label">Profit CARGR </label></div>
-          </div>
-        </div>
-        
-
-        <div className="key-section">
-          <label className="key-label">GOV</label>
-          <div className="ratio-label-container">
-          <div><label className="ratio-label">GOV</label></div>
-          <div><label className="ratio-label">GOV </label></div>
-          </div>
-        </div>
-        
-
       </div>
       {/* --------------------------end key section -------------------*/}
       {cards}
-      {newCard()}
+      <div id="cardSearch" className="card-search">
+          <select id="drop" onChange={card}>
+            <option selected disabled>Select Company</option>
+            {opt}
+          </select>
+      
+        </div>
       
     </div>
 )}
