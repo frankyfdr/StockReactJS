@@ -10,12 +10,13 @@ const ctx = useContext(Context)
 
 
 const optclick = (sym) =>{
+    
 
    let x = ctx[1].symUser.split(",");
 
     if(!x.includes(sym))
     {
-        let newList = props.symUser+","+sym;
+        let newList = props.symUser+","+sym.toUpperCase();
         props.setSymList(newList);
         clearInterval(props.refresh);
         if(props.nameUser != "default")
@@ -24,7 +25,7 @@ const optclick = (sym) =>{
     else
     alert("Stock already in portfolio!")
 
-    document.getElementById("search-opt").style.display = "none"
+    focusout();
 }
 
 const viewOpt = (e) =>
@@ -64,15 +65,17 @@ const mySubmitHandler = (e) =>
         e.preventDefault();
 }
 
+/* ----------------display on/off the menu-----------------------*/
 const menuShow =() =>
 {
     const menu = document.querySelector(".menu-container")
     menu.classList.toggle("show")
-  
 }
+/* ----------------function to verify if the Enter key is pressed-----------------------*/
 const isEnter = (event) => {
    
     if (event.key === "Enter") {
+        //sending the click element
         optclick(event.target.value);
         focusout();
     }
@@ -80,16 +83,20 @@ const isEnter = (event) => {
   };
 return ( 
     <div>
+        {/*} -------------menu icon------------------{*/}
     <div className="HamMenu" onClick={menuShow}>
         <div className="optHamMenu"></div>
         <div className="optHamMenu"></div>
         <div className="optHamMenu"></div>
     </div>
-<div className="searchBox">
+     {/*} -------------search input------------------{*/}
+<div className="searchBox"  >
     <div id="formSearch" >
         <div id="serchDiv">
-        <input id="inputT" autoComplete="off" onChange={viewOpt} onKeyDown={isEnter}  onBlur={focusout}  type="text"/>
-        <div id="search-opt">{opt} </div>
+        <input id="inputT" autoComplete="off" placeholder="Search.." onChange={viewOpt} onKeyDown={isEnter}    type="text"/>
+        <div id="search-opt"  >{opt}
+        <div id="blank-click" onClick={focusout}></div>
+        </div>
         </div>
         
     </div>

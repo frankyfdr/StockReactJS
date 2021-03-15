@@ -95,8 +95,9 @@ const signout= ()=>{
             <div onClick={menuShow} style={{width: "100%",textAlign: "right"}} ><label>X</label></div>
             {login()}
             <div className="Menu-item">
-            <Link to="/"> <button className="BtnMenu" onClick={menuShow} >
-                    Home</button></Link>
+            <Link to="/"> 
+            <button className="BtnMenu" onClick={menuShow} >Home</button>
+            </Link>
             </div>
                 <div className="Menu-item" >
                      <button onClick={()=>menuItem("menu2")} className="BtnMenu">My Portfolio</button>
@@ -107,8 +108,9 @@ const signout= ()=>{
                     </div>
                 </div>
             <div className="Menu-item">
-            <Link to="/Compare"> <button className="BtnMenu" onClick={menuShow} >
-                     Compare</button></Link>
+            <Link to="/Compare"> 
+                <button className="BtnMenu" onClick={menuShow} >Compare</button>
+             </Link>
             </div>
             { (ctx[2].nameUser!="default") ? <div className="signOut" ><label onClick={signout} className="signOutlb">Sign Out</label></div> : <div></div>
             }

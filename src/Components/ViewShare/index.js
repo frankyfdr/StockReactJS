@@ -29,17 +29,15 @@ const ShowMore = (e) => {
     var str = id.split(".")
     id = str[0]+'\\.'+str[1];
   }
-  console.log(id)
   const moreinfo = document.querySelector("#M"+id);
   moreinfo.classList.toggle("on")
 
 }
-
   return (
     <div className="stock-container"  onClick={stk} style={{margin: '1%'}} >
     <div id={props.sym} className={props.type} >
-    
-      <div id={props.sym} className="NameBox"  >
+      <div id={props.sym} className="NameBox" >
+        <div className={"marketState "+props.Mstate}  ></div>
         <label id={props.sym} className="symName">{props.sym}</label>
       </div>
       <div className="infoText">

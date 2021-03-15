@@ -71,7 +71,6 @@ const App = () => {
       nodejs,
       refresh
     ]}>
-      <label style={{width: "100%",textAlign: "center",position:"absolute"}}><marquee>Under Construction</marquee></label>
       <BrowserRouter>
       <Menu nameUser={nameUser} setSymUser={setSymUser} symUser={symUser} symInfo={symInfo} setSymInfo={setSymInfo} />
       <Login refresh={refresh} nodejs={nodejs} setName={setNameUser} setEmail={setEmailUser} setSymUser={setSymUser} setUsername={setUsername} />

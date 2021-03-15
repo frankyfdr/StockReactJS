@@ -115,3 +115,10 @@ select {
 .HamMenu:hover .optHamMenu {
   background-color: rgb(116, 204, 211);
 }
+#blank-click{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  left:0;
+}

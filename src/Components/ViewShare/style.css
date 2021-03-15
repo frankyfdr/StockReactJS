@@ -28,12 +28,28 @@
   width: 30%;
   z-index: 3;
   background-color: #000;
+  display: inline-flex;
 }
 .infoText,
 .NameBox {
   position: relative;
   border-radius: 20px;
   text-align: center;
+}
+.marketState{
+  border-radius: 50px;
+  width: 5px;
+  height: 5px;
+ 
+  margin-top: 15%;
+  margin-left: 10%;
+  margin-right: 5%;
+}
+.Mclose{
+  background-color: red;
+}
+.Mopen{
+  background-color: green;
 }
 .infoText {
   justify-content: center;
