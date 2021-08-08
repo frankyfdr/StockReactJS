@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Show from './Components/Show/Show.js';
 import Loading from  "./Components/Loading/Loading.js";
 import Login from "./Components/LoginForm/Login.js";
-
+import Financial from './Components/Financial/Financial.js'
 
 const Routes = (props) => (
     
@@ -18,7 +18,7 @@ const Routes = (props) => (
             return ( <Compare  sym={props2.match.params} nodejs={props.nodejs} />)
         }} />  
         {*/}
-        <Route path="/login" component={Login} />  
+        <Route path="/Financial" component={Financial} />  
         <Route  exact path="/" component={() => 
         {
           

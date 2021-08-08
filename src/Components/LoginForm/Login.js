@@ -1,8 +1,8 @@
 import React, {useState}from "react";
 import axios from "axios";
 import "./style.css";
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal,Button } from "react-bootstrap";
 
 const Login = (props) => 
 {
@@ -101,6 +101,11 @@ const Login = (props) =>
       props.setSymUser(data.sym);
       clearInterval(props.refresh);
     }
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     return(<div className="Contain" id="login">
         <div className="effectMode"></div>
@@ -127,7 +132,8 @@ const Login = (props) =>
         
     </div>
 </div>
-)}
+)
+}
 
 
 export default Login;

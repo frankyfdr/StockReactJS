@@ -99,6 +99,11 @@ const signout= ()=>{
             <button className="BtnMenu" onClick={menuShow} >Home</button>
             </Link>
             </div>
+            <div className="Menu-item">
+            <Link to="/financial"> 
+            <button className="BtnMenu" onClick={menuShow} >Financial</button>
+            </Link>
+            </div>
                 <div className="Menu-item" >
                      <button onClick={()=>menuItem("menu2")} className="BtnMenu">My Portfolio</button>
                      <div name="menu2" className="colapse" >
