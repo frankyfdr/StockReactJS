@@ -11,9 +11,6 @@ import ChartPage from "./ChartPage"
 const MyTabs = ({tabs,setTabs}) => {
 
     
-    //  const [tabList, setTabList] = useState([{ name: 'EPR', id: 1, }, { name: 'alx', id: 23 }, { name: 'rmv.l', id: 2 }])
-
-    
 
     const Title = ({item}) => {
         return (

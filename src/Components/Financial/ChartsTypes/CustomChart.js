@@ -13,7 +13,7 @@ import 'chartjs-adapter-moment';
 
 
 
-const ChartPage = ({sym,data}) => {
+const ChartPage = ({sym,data,index}) => {
     
     
     var filterLabel = _.groupBy(filterCode, 'code')
@@ -96,7 +96,7 @@ const ChartPage = ({sym,data}) => {
 
             <div className='chart-container'>
                
-                <Filter settings={{ chartSettings, setChartSettings }} sym={sym} />
+                <Filter settings={{ chartSettings, setChartSettings }} index={index} sym={sym} />
                 
                 <div className='chart-container'>
                     <Line data={chartData} options={options} />

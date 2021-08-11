@@ -9,9 +9,11 @@ const ReturnChart = ({ data }) => {
     const [chartData, setChartData] = useState()
     const [percentValues, setPercentValues] = useState(['4'])
 
+    
 
     useEffect(() => {
 
+        try{
         let datasets = []
         if (data && percentValues.length > 0) {
             const clone = _.groupBy(data.shareFinancial, 'code')
@@ -55,6 +57,10 @@ const ReturnChart = ({ data }) => {
 
             setChartData({ datasets })
         }
+    }catch(err)
+    {
+        console.error(err)
+    }
 
     }, [data,percentValues])
 

@@ -8,7 +8,7 @@ import { concatPagination } from "@apollo/client/utilities";
 
 
 const filterList = filterCode.map(a => _.clone(a));
-const Filter = ({ settings, sym }) => {
+const Filter = ({ settings, sym,index }) => {
 
    
     const filterGrouped = _.groupBy(filterList, "periodType")
@@ -42,7 +42,7 @@ const Filter = ({ settings, sym }) => {
             <Accordion.Collapse eventKey="0">
                 <div>
                 <Form.Check
-                        id={'historicPric'+sym}
+                        id={'historicPric'+sym+index}
                         type='switch'
                         label={"Historic Price"}
                         onChange={(e) => filterhandler(e, filterList.find(el => el.code === 'historicPrice'))}
@@ -64,7 +64,7 @@ const Filter = ({ settings, sym }) => {
                                     filterGrouped['12M'].map((item, idx) => {
                                         return (<div className='filter-item-container'>
                                             <Form.Check
-                                                id={item.code + sym}
+                                                id={item.code + sym+index}
                                                 type='switch'
                                                 label={item.label}
                                                 onChange={(e) => filterhandler(e, item)}
@@ -86,7 +86,7 @@ const Filter = ({ settings, sym }) => {
                                     filterGrouped['3M'].map((item, idx) => {
                                         return (<div className='filter-item-container'>
                                             <Form.Check
-                                                id={item.code + sym}
+                                                id={item.code + sym+index}
                                                 type='switch'
                                                 label={item.label}
                                                 onChange={(e) => filterhandler(e, item)}

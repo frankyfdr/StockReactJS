@@ -24,7 +24,7 @@ const ChartPage = ({ sym, }) => {
                     <Popover id='popover-positioned-right'>
                         <div>
                             {
-                                ['custom','return'].map(item=>( <div onClick={()=>{
+                                ['custom','return'].map(item=>( <div className='new-chart-item' onClick={()=>{
                                     if(charts.length > 0)
                                     setCharts(old=> [...old,item])
                                     else
@@ -39,12 +39,13 @@ const ChartPage = ({ sym, }) => {
                 <Button variant="secondary">New chart</Button>
             </OverlayTrigger>
             {
-               charts.map(item=>
+            
+               charts.map((item,index)=>
                 {
                     switch(item)
                     {
-                      case 'custom':{ return <> <div className='close-chart' onClick={()=>setCharts(remove(item,charts))}>Close</div> <CustomChart sym={sym} data={data}/>  </> }
-                      case 'return':{ return <> <div className='close-chart' onClick={()=>setCharts(remove(item,charts))}>Close</div><ReturnChart sym={sym} data={data} /> </> }
+                      case 'custom':{ return <> <div className='close-chart' onClick={()=>setCharts(remove(item,charts))}>Close</div> <CustomChart sym={sym} index={index} data={data}/>  </> }
+                      case 'return':{ return <> <div className='close-chart' onClick={()=>setCharts(remove(item,charts))}>Close</div><ReturnChart sym={sym} index={index} data={data} /> </> }
                     }
                 })
             }

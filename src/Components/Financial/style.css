@@ -134,6 +134,16 @@ border: 1px solid rgba(128, 128, 128, 0.5);
     min-height: 200px;
     
 }
+.new-chart-item{
+    padding: 10px 30px;
+    margin: 5px;
+    background-color: #333333;
+    border-radius: 5px;
+    color: white;
+}
+.new-chart-item:hover{
+    background-color: black;
+}
 .expanded-btn{
     color:white;
     padding: 10px;
